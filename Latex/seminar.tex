@@ -1,0 +1,348 @@
+% Master-Konferenzseminar, FH Suedwestfalen
+%
+% Vorlage ist xelatex-kompatibel
+% Literatur in seminar.bib
+% Build-Prozess:
+%  xelatex seminar; bibtex seminar; xelatex seminar; xelatex seminar
+%
+%
+\documentclass[twoside,a4paper]{IEEEtran}
+\usepackage{fontspec}
+\usepackage[ngerman]{babel}
+\usepackage{cite}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{multicol}
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
+\lstset{numberstyle=\tiny\color{blue},keywordstyle=\color{blue}}
+\usepackage{blindtext}  % <-- kann weg!
+% Custom
+\renewcommand{\thepage}{X-\arabic{page}}
+\begin{document}
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{Erkennung japanischer Schriftzeichen \\mittels maschinellen Lernens%
+    \thanks{%
+    Dieser Beitrag entstand im 
+    Rahmen des Master"=Konferenzseminars \emph{info@swf 2022}, das im
+    Wintersemester 2021/22 vom Fachbereich Informatik und
+    Naturwissenschaften der Fachhochschule Südwestfalen
+    durchgeführt wurde.}}
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{
+  \IEEEauthorblockN{Sebastian Schmidt\\ }
+  \IEEEauthorblockA{Fachhochschule Südwestfalen}
+}
+
+\maketitle
+
+
+%%% Zusammenfassung
+\begin{abstract}
+Das japanische Schriftsystem ist mit drei verschiedenen Alphabeten (Hiragana, Katakana, Kanji) eines der komplexesten Schriftsysteme der Welt. Eine Person muss dabei im Japanischen ca. 2000 Schriftzeichen erlernen, um eine Zeitung vollständig verstehen zu können. In dem Paper „Recognizing Handwritten Japanese Characters Using Deep Convolutional Neural Networks” von Charlie Tsai wurde eine Erkennung mittels der VGGNet, speziellen Architekturen Konvolutionaler Neuronaler Netze, erprobt. Im Ansatz wurde dabei sowohl die separate Erkennung aller Alphabete als auch die gemeinsame aller möglichen Schriftzeichen erprobt. Dabei konnten Testgenauigkeiten von bis zu 99,53\% erreicht werden. In diesem Paper sollen die Ergebnisse nachvollzogen und mit weiteren Mitteln die Qualität des Modells überprüft werden. Dies soll den Einsatz und klaren Vergleich weiterer Netzwerkarchitekturen wie beispielsweise der Vision Transformer oder ResNet ermöglichen. Zusätzlich wurden weitere moderne VGG und ResNet Architekturen gesichtet und mit dem implementierten Mitteln überprüft. Auch ein Einsatz weiterer Datensätze aus der vorliegenden Datenbank wurde erprobt. 
+\end{abstract}
+
+
+%%% Text beginnt
+\section{Einleitung}
+Die japanische Sprache ist eine der komplexesten Sprachen der Welt. Besonders für Muttersprachler europäischer Sprache sind die hohen Abweichungen in Aussprache, Grammatik und Schriftsystem ein Grund für große Probleme beim Erlernen der Sprache. Laut dem FSI gilt Japanisch, neben Sprachen wie Arabisch, Koreanisch und Chinesisch, als Kategory IV Sprache, welche mindestens 2200 Lernstunden für englische Muttersprachler benötigen und damit als eine der schwierigsten Sprachen gilt \cite{FSI}.
+
+Geteilt in drei Alphabete (Hiragana, Katakana, Kanji) muss ein Schüler des Japanischen über 2000 Schriftzeichen erlernen, um eine Zeitung ohne Hilfe lesen zu können. Dazu kommt zusätzlich nicht nur die Bedeutung dieser, sondern im Falle der Kanji auch verschiedene Lesungen, welche von einigen bis in Dutzende pro Zeichen reichen können \cite{ABOUT_JAPANESE}.
+
+Schüler des Japanischen können heutzutage auf viele Tools zurückgreifen, um Ihren Lernvorgang zu unterstützen. Auch gibt es einige Apps, welche die automatische Erkennung von japanischen Schriftzeichen ermöglichen. In Charlie Tsais Thesis "Recognizing Handwritten Japanese Characters Using Deep Convolutional Neural Networks" konnte dieser bis zu 99,53\% aller Schriftzeichen der ETL Character Database, einer Datenbank von handgeschriebenen japanischen Schriftzeichen, korrekt klassifizieren \cite{RHC}. Diese Ergebnisse sollen in diesem Projekt durch den Einsatz der genutzten VGGNet nachvollzogen und falls möglich durch die Nutzung weiterer Techniken wie Vision Transformer verbessert werden. Für den praktischen Teil der Arbeit wurde Python 3 mit Keras und Tensorflow 2 verwendet.
+\section{Grundlagen}
+Im Folgenden Abschnitt sollen kurz die Grundlagen der eingesetzten Modelle dargestellt werden. Dabei wird zunächst auf die Konvolutionale Neuronale Netze und dann auf die Vision Transformer eingegangen. Grundlagen zu Neuronalen Netzen müssen aufgrund des Umfangs dabei als gegeben angesehen werden.
+\subsection{Konvolutionale Neuronale Netze} %11.11
+Konvolutionale Neuronale Netze oder Convolutional Neural Networks sind Neurale Netze die vom visuellen Cortex des Gehirns inspiriert wurden. Hierbei sind Neuronen in unteren Schichten für die Erkennung primitiver Formen verantwortlich, während Neuronen in höheren Schichten auf immer komplexere Muster reagieren \cite[S.360]{MACHINE_LEARNING}. 
+\begin{figure}[!htb]
+	% \centering
+	\includegraphics[width=\columnwidth]{cnn}
+	\caption{Aufbau einer Konvolutionalen Schicht mit Schrittweite eins und Zero Padding \cite[S.362]{MACHINE_LEARNING}.}
+	\label{bild1}
+\end{figure}
+
+Zur Umsetzung haben sich hier in der Praxis sogenannten Konvolutionale Schichten mit einem bestimmten Wahrnehmungsfeld mehrere Pixel etabliert, welche  ihre Eingabe mit einer Schrittweite (Stride) analysieren und so aus den Pixeln eine neue Ausgabe erzeugen. Dies können beispielsweise Bilder oder Ausgaben vorherigen Konvolutionaler Schichten sein. Die Ränder der aktuellen Eingabe werden dabei in der Regel mit einem Padding versehen, um eine Ausgabe der selben Größe wie der Eingabe zu ermöglichen \cite[S.361-363]{MACHINE_LEARNING}. Die Eingabe des Wahrnehmungsfelds wird mittels eines sogenannten Filters gewichtet, bevor es einen Ausgabepixel erzeugt. Diese lassen sich als kleine Bilder visualisieren, welche auf bestimmte Formen in der Ausgangsschicht reagieren \cite[S.363]{MACHINE_LEARNING}. 
+
+\begin{figure}[!htb]
+	% \centering
+	\includegraphics[width=\columnwidth]{cnn_example}
+	\caption{Aufbau eines CNN mit drei Schichten und vielen Feature Maps \cite[S.365]{MACHINE_LEARNING}.}
+	\label{bild1}
+\end{figure}
+
+Pro Konvolutionaler Schicht können nun mehrere Filter, sogenannte Feature Maps, auftreten, welche die Erkennung verschiedener Formen in der vorherigen Schicht erlauben und in tieferen Schichten die Kombination vorheriger Features ermöglichen. Tatsächlich erstreckt sich nun das Wahrnehmungsfeld über alle vorherigen Feature Maps, was in einer dreidimensionalen Gewichtsmatrix resultiert und aufgrund der mehreren Kanäle nun auch eine bessere Analyse von Farbbildern ermöglicht \cite[S.364-365]{MACHINE_LEARNING}. Typischerweise wird durch eine passende Wahl von Strides und Filtern eine Komprimierung der Bildgröße bei Steigerung der Feature Maps angestrebt. Eine Komprimierung kann dabei aber nicht nur durch Strides, sondern auch durch Pooling Layer geschehen. Ein Pooling Layer betrachtet in der Regel einen gewissen zweidimensionalen Bereich einer Ausgabe und verarbeitet den auf eine gewisse Weise. Hierdurch entsteht eine Komprimierung der Ausgabe der vorherigen Konvolutionalen Schicht. Eine typische Art von Pooling ist das Max-Pooling, bei welcher die größte Zahl des Bereichs übernommen wird \cite[S.369-370]{MACHINE_LEARNING}. In den meisten Architekturen von CNNs, wird am Ende die Ausgabe der letzten Konvolutionalen Schicht geebnet und mit einem Feed-Forward-Netz verbunden, welches dann klassische Aufgaben wie Klassifikation vornehmen kann \cite[S.371]{MACHINE_LEARNING}. Einige verbreitete Architekturen von CNNs, welche aus in diesem Projekt erprobt wurden, sind das ResNet und VGGNet \cite[S.378-381]{MACHINE_LEARNING}.
+
+\subsection{Vision Transformer} %12.11
+
+Vision Transformer sind eine neue Technik des Maschinellen Lernens auf Basis der Transformer. Diese basieren vom Hauptprinzip auf einer sogenannten Attention und werden vorwiegend im Natural Language Processing eingesetzt, in welchem sie die vorher prävalenten Rekurrenten Neuronalen Netze weitgehend ablösen konnten \cite{TRANSFORMERS}. Wurden diese in Encoder-Decoder Netzen eingesetzt, so wurde bis zur Nutzung von Attention nur ein letzter Zustand des Encoders als Eingabe im Decoder genutzt. Dies hat sich nach aktueller Forschung als Bottleneck herausgestellt, welches Rekurrenten Neuronalen Netze besonders bei längeren Sätzen stark behindert hat \cite[S.2]{TRANSFORMERS}. Stattdessen wurden neue RNNs entworfen, welche es den Decoder über eine erlernbare Attention erlauben sich in jedem Schritt auf andere Aspekte aller Zustände des Encoders zu konzentrieren \cite[S.4]{RNN_ATTENTION}.  
+
+\begin{figure}[!htb]
+	% \centering
+	\includegraphics[width=\columnwidth]{attention_visualized}
+	\caption{Beispiel für erlernte Attention zwischen einem englischen und französischen Satz \cite[S.6]{RNN_ATTENTION}.}
+	\label{bild1}
+\end{figure}
+
+
+In weiteren Forschungen im Natural Language Processing hat sich herausgestellt, dass reine Netzwerke basierend auf Attention, die weiter oben genannten Transformer, RNNs als state of the art ablösen können \cite[S.2]{TRANSFORMERS}. 
+
+Vision Transformer sind vom Aufbau den Transformern im Natural Language Processing sehr ähnlich, besitzen jedoch im Fall von Klassifikation nur den Encoder Teil der Transformer Modelle. Der grundsätzliche Aufbau lässt sich in der Abbildung \ref{vitimg} erkennen.
+
+\begin{figure}[!htb]
+	% \centering
+	\includegraphics[width=\columnwidth]{vitimg}
+	\caption{Grundsätzlicher Aufbau eines Vision Transformers \cite[S.3]{VIT}.}
+	\label{vitimg}
+\end{figure}
+
+Dabei werden zunächst die Eingabebilder in mehrere zweidimensionale Bereiche einer vordefinierbaren Größe unterteilt, wobei ähnlich wie bei den CNNs ein Stride zum Überlappen von Bildbereichen genutzt werden kann. Danach werden die Eingabedaten über eine trainierbare lineare Projektion auf D, eine konstante vordefinierte Vektorgröße in allen Schichten des Transformers, Dimensionen reduziert und damit die sogenannten Patch-Embeddings generiert. Schließlich werden eindimensionale Positionskennungen der Patches hinzugefügt und an den Anfang der Daten ein spezielles Class-Token für das Erlernen der vorhandenen Klasse angefügt  \cite[S.3]{VIT}. 
+
+Die Schichten des Encoders bestehen im Kern aus mehreren Multiheaded Self-Attentions, darauffolgende zweischichtigen Multilayer Perceptrons und Residual Connections zwischen den inneren Schichten. Weiterhin wird eine Layernormalisierung vor jeder Multiheaded Self-Attention und jedem Multilayer Perceptron ausgeführt. Am Ende wird aus dem Encoder schließlich der Statusvektor an der Position des Class-Token entnommen und zur Klassifikation in ein weiteres Multilayer Perceptron mit einer einzelnen Schicht geleitet \cite[S.3-4]{VIT}. 
+
+In den Ergebnissen zeigt sich, dass Vision Transformer ähnliche Ergebnisse wie aktuelle CNNs erzeugen können, wenn sie auf ausreichend großen Datensätzen trainiert werden. Dabei benötigen sie zusätzlich deutlich weniger Rechenkapazitäten \cite[S.5]{VIT}. Dies wird besonders ersichtlich, wenn ein Vision Transformer auf Datensätze verschiedener Größe vortrainiert wird. Hier hat sich gezeigt, dass ein Training auf dem JFT-300M, Googles Hauseigener Datensatz mit über 300 Millionen Bildern, eine grundlegende bessere Genauigkeit als state of the art CNNs erzeugt, während der vergleichsweise kleine ImageNet Datensatz mit 14 Millionen Bildern \cite{IMAGENET} die Genauigkeit schlechter werden lässt \cite{JFT}.
+\section{Übersicht der Daten} %13.11
+Die genutzten Bilder von japanischen Schriftzeichen aus der Thesis von Charlie Tsai sind aus der ETL Character Database \cite[S.2-3]{RHC}, einer Datenbank erstellt zwischen 1973 und 1984 aus ca. 1,2 Millionen handgeschriebener und gedruckter Hiragana, Katakana, Kanji und weiterer Zeichen. Sie wird geteilt in neun Datensätze ETL-1 bis ETL-9 mit unterschiedlichen Inhalten \cite{ETL}. Jedes Zeichen liegt als 64 x 64 Pixel Grauwertdaten vor, welche bereits segmentiert und zentriert sowie mit einer speziellen Methode in ein Binärbild umgewandelt wurden \cite[S.3]{RHC}. Aufgrund der speziellen Formate und Spezifikationen der Datensatzdateien, musste ein spezielles Pythonskript hinzugezogen werden, um die Daten in einfacher nutzbare PNG-Dateien umzuwandeln \cite{ETL_FORMATS}. 
+
+\begin{figure}[!htb]
+	% \centering
+	\includegraphics[width=\columnwidth]{kana}
+	\caption{Extrahierte und invertierte Kana aus der ETL Character Database \cite[S.1]{RHC}.}
+	\label{kana}
+\end{figure}
+
+Nun, wurden aus den umgewandelten Daten verschieden zusammengesetzte Datensätze erstellt. Der erste ist an der Thesis von Charlie Tsai angelehnt und beinhaltet lediglich die den ETL-1 Datensatz mit Katakana und den ETL-8 Datensatz mit Hiragana sowie Kanji \cite[S.3]{RHC}. Der Aufbau von diesem mit Unterteilungen in Hiragana, Katakana, Kanji und sonstiger Zeichen sowie das arithmetische Mittel der Datensätze pro Klasse und deren Standardabweichung lässt sich in der Tabelle \ref{data_tsai} erkennen.
+\begin{table}[!htb]
+	\caption{Aufbau des ersten Datensatz nach Charlie Tsai.}
+	\label{data_tsai}
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Alphabet & Klassen & Datensätze & Mean & Stddev\\
+		\hline
+		\hline
+		Hiragana & 75 & 12.075 & 161 & 0\\
+		\hline 
+		Katakana & 48 & 71.959 & 1.499 & 342\\
+		\hline
+		Kanji & 881 & 141.841 & 161 & 0\\
+		\hline
+		Sonstige & 0 & 0 & 0 & 0\\
+		\hline
+		\hline
+		Gesamt & 1.004 & 225.875 & 224 & 295\\
+		\hline
+	\end{tabular}
+\end{table}
+
+Wie klar zu sehen ist, sind Katakana im Gegensatz zu Kanji und Hiragana stark überrepräsentiert. Eine Nutzung von Klassengewichtungen, um die unterrepräsentierten Daten hervorzuheben, könnte sich daher als sinnvoll erweisen. Weiterhin stellt sich dies auch für die Katakana als möglicherweise sinnvoll heraus, da diese eine gewisse repräsentative Streuung aufweisen. Da der ETL-1 Datensatz ebenfalls Zeichen mit Beugungen (Dakuten und Handakuten) beinhaltet, besitzt der Datensatz deutlich mehr Klasse für Hiragana als Katakana, obwohl beide Alphabete sehr ähnlich aufgebaut sind. Mit einem Blick auf die originale Arbeit sind hier zwei Probleme zu erkennen. Zum einem hat sich die Anzahl der Datensätze seit dem originalen Paper um ca. 1000 erhöht \cite[S.3]{RHC}. Da hier kein Fehler beim Vorverarbeiten der Daten aufgefallen ist, könnte es sich um ein Hinzufügen von Daten seitens der Verwalter der ETL Character Database handeln, was auch in einer Steigerung der Klasse der Kanji um drei resultiert. Weiterhin finden sich drei Katakanatypen weniger wieder. Dies hängt mit der Kodierung ausgestorbener Zeichen im ETL-1 Datensatz zusammen, welche die Buchstaben \textit{yi} zu \textit{i}, \textit{ye} zu \textit{e} und \textit{wu} zu \textit{u} werden lassen \cite{ETL}. Hier wurden im Gegensatz zur originalen Arbeit die daraus resultierenden Beispiele zu den passenden Vokalen umgeschrieben \cite[S.3]{RHC}. Eine gleichzeitge Erhöhung der Kanji und Verringerung der Katakana um drei, hat sich nach Prüfungen als rein zufällig herausgestellt. 
+
+Mit diesem ersten Datensatz können einige praktische Probleme in unseren Augen leider nicht gelöst werden. Will man maschinelles Lernen zum Übersetzen von Sprache einsetzen, so ist es nötig die meisten Aspekte dieser Sprache zu berücksichtigen. Heutzutage hat sich das lateinische Alphabet in viele Aspekte der japanischen Sprache etabliert. Eine reine Erkennung japanischer Zeichen ist daher für praktische Anwendungen eher weniger sinnvoll. Auch Satzzeichen und Sonderzeichen wurden im originalen Datensatz nicht berücksichtigt, obwohl diese für ein späteres Verständnis ganzer Sätze essentiell sind. Zuletzt beinhaltet der Datensatz lediglich 881 der 2136 üblich genutzten Kanji \cite[S.3]{RHC}. Da die ETL Character Database noch weitere Datensätze beinhaltet, wurde sich in einer Auswahl an Daten entschieden die gesamte Datenbank zu nutzen. Der Aufbau dieser Gesamtauswahl lässt sich in Tabelle \ref{data_total} erkennen.
+
+\begin{table}[!htb]
+	\caption{Aufbau des zweiten Datensatz als Gesamtauswahl der ETL Character Database.}
+	\label{data_total}
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Alphabet & Klassen & Datensätze & Mean & Stddev\\
+		\hline
+		\hline
+		Hiragana & 77 & 67.335 & 874 & 437\\
+		\hline 
+		Katakana & 73 & 147.237 & 2.017 & 1.496\\
+		\hline
+		Kanji & 2.967 & 782.561 & 264 & 83\\
+		\hline
+		Sonstige & 74 & 175.308 & 2.369 & 1.013\\
+		\hline
+		\hline
+		Gesamt & 3.191 & 1.172.441 & 367 & 507\\
+		\hline
+	\end{tabular}
+\end{table}
+Wie klar zu sehen ist beinhaltet die gesamte ETL Character Database noch deutlich mehr Daten, welche für das Maschinelle Lernen genutzt werden können. So konnten die vorliegenden Kanji verdreifacht und die durchschnittlichen Datensätze pro Kanji nahezu verdoppelt werden. Weiterhin sind die Hiragana nicht mehr stark unterrepräsentiert und sonstige Zeichen wie aus dem lateinischen Alphabet oder Satzzeichen können erlernt werden. Eine größere Schwankung in der Durchschnittszahl der Datensätze sowie eine höhere Streuung dieser, macht auch hier wieder eine Nutzung von Klassengewichtungen eine mögliche sinnvolle Ergänzung.
+
+Eine beliebte Möglichkeit das Overfitting von Modellen zu verringern sowie die Toleranz von Daten in der Praxis zu verbessern, ist die sogenannte Data Augmentation. Dabei können durch bestimmten Transformationen aus vorliegenden Daten neue generiert werden. Typische Vorgehensweisen bei Bildern sind dabei das skalieren, verschieben oder rotieren der Daten. Auch eine Spiegelung kann sich bei manchen Bilddaten als sinnvoll erweisen, jedoch würde dies die Bedeutung von Schriftzeichen zerstören. Werden Transformationen miteinander kombiniert, so kann die Anzahl der vorhandenen Daten um ein vielfaches erhöht werden \cite[S.311]{MACHINE_LEARNING}. Im Code des Projekts können Skalierungen und Rotationen verwendet werden, um die Daten künstlich zu erhöhen. Dies geschieht über Transformationsmatrizen, welche mit der Bibliothek CV2 generiert und angewendet wurden. Eine Generation von 25 verschiedenen Transformationsmatrizen lässt sich in der Funktion im folgenden Listing \ref{listing1} erkennen.
+\begin{lstlisting}[language=python,label=listing1,caption={Python-Code für die Generierung von Transformationsmatrizen}]
+	
+def create_transforms(
+  format, 
+  scale_values, 
+  rot_values):
+  
+  if rot_values is None or len(rot_values) == 0:
+    rot_values = [-20, -10, 0, 10, 20]
+	
+  if scale_values is None or len(scale_values) == 0:
+    scale_values = [0.8, 0.9, 1.0, 1.1, 1.2]
+	
+  transform_matrices = []
+  for rot_value in rot_values:
+    for scale_value in scale_values:
+      transform_matrix = cv2.getRotationMatrix2D(
+        (format[0]/2, format[1]/2),
+        rot_value, scale_value)
+      transform_matrices.append(transform_matrix)
+
+  return transform_matrices
+\end{lstlisting}
+Die Transformationsmatrizen würden bei der beispielhaften Anwendung auf dem Kanji \textit{zwei Stück} die Ausgabe in der Abbildung \ref{rot} erzeugen. Es ist klar die Skalierung zwischen den Größen und die Rotation zu erkennen, welche in einer Vergrößerung der Daten um den Faktor 25 resultieren würde.
+\begin{figure}[!htb]
+	% \centering
+	\includegraphics[width=\columnwidth]{rot_scale}
+	\caption{Transformationen des Kanji \textit{zwei Stück}.}
+	\label{rot}
+\end{figure}
+\section{Eingesetzte Modelle}
+\begin{figure*}[!htb]
+	\centering
+	\includegraphics[width=2.1\columnwidth]{conv_net_architectures}
+	\caption{Genutzte VGGNet Architekturen im Paper von Charlie Tsai \cite[S.3]{RHC}.}
+	\label{vggnet}
+\end{figure*}
+Im Gegensatz zur originalen Arbeit von Charlie Tsai, wurde sich aufgrund der guten Ergebnisse bei einer gemeinsamen Erkennung aller Alphabete gegen die Nutzung von separaten Modellen für Kanji, Katakana und Hiragana entschieden. Dieses Vorgehen würde ein zusätzliche Modell zur Unterscheidung von Alphabeten benötigen und daher insgesamt vier Modelle nötig machen. Da die Ergebnisse für der Erkennung aller Alphabete laut Tsais Arbeit bereits bei sehr hohen 99,53\% in den Testfällen lagen, wurde sich gegen einen separaten Ansatz entschieden, um den Fokus auf die Erkennung aller Zeichen zu legen \cite[S.4-6]{RHC}. Aufgrund der teilweise hohen Streuung der Häufigkeiten von Datensätzen, wurden Ansätze sowohl mit als auch ohne Klassengewichtungen erprobt.
+
+Während des Lernvorgangs wurden die Daten in 80\% Trainings- und jeweils 10\% Validierungs- und Testdaten geteilt. Alle Modelle wurden mit einem Adam-Optimizer trainiert, welcher auch in Tsais Arbeit genutzt wurde \cite[S.4]{RHC}. Die Startlernrate wurde dabei von Modell zu Modell verschieden angepasst. Die Genauigkeit und der Verlust auf den Validierungsdaten wird mit jeder Epoche berechnet und dient als grobes Maß des Fortschritt während des Trainings. Nach dem Training wird eine Übersicht und der gewichtete sowie ungewichtete Durchschnitt des F1-Scores aller Klassen auf den Validierungsdaten als auch für einen späteren Vergleich zwischen den Modellen auf den Testdaten gebildet.
+\subsection{VGGNet}  %14.11
+Der Architektur der VGGNet wurde in Simonyans und Zissermans Paper \textit{Very Deep Convolutional Networks for Large-Scale Image Recognition} entworfen und konnten 2015 state-of-the-art Genauigkeiten mit einem relativ einfachen sowie flexiblen Aufbau Konvolutionaler Neuronaler Netze erreichen \cite[S.1]{simonyan2015deep}. Sie arbeiten typischerweise mit einem Wahrnehmungsfeld von 3 x 3 Elementen in den konvolutionalen Schichten. Weiterhin nutzen sie ein 2 x 2 Max-Pooling mit einem Stride von 2 nach einigen aber nicht jeder Schicht. Danach folgen 2 Fully-Connected Schichten mit 4096 Neuronen und schließlich eine Fully-Connected Schicht mit Neuronen in Höhe der Anzahl der vorliegenden Klassen \cite[S.2]{simonyan2015deep}.
+
+In Tsais Arbeit wurden 11 VGGNet artige Netze umgesetzt, welche in der Tabelle \ref{vggnet} nach Netzgröße geordnet dargestellt werden. Diese weisen einige Veränderungen in der Struktur auf im Vergleich zum originalen VGGNet Paper auf. Zum einen liegen die Daten nur mit einem 64 x 64 Pixel Grauwertkanal vor \cite[S.3]{RHC}. Dadurch wird die Größe der Eingabedaten im Gegensatz zum originalen VGGNet Paper mit 224 x 224 Pixel RGB-Bildern sehr viel kleiner \cite[S.2]{simonyan2015deep}. Weiterhin wurde die Anzahl der Neuronen und Schichten im Fully-Connected Teil von Modell zu Modell angepasst \cite[S.3]{RHC}. Aufgrund der guten Ergebnisse der Klassifikation in der originalen Arbeit, wurde ein besonderer Fokus auf die Modelle M7-1, M7-2, M9 und M12 gesetzt \cite[S.5]{RHC}. Alle diese Netzen wurden nach Tsai mit einem Dropout versehen, welcher allerdings aufgrund Probleme bei höheren Raten auf 25\% verringert wurde und nur nach jeder Gruppe von Schichten platziert wurde \cite[S.2]{RHC}. Zusätzlich musste auf eine Batch-Normalisierung nach jeder Schicht verzichtet werden, da diese Probleme im Zusammenhang mit dem Dropout verursacht und die Ergebnisse stark verschlechtert hat \cite[S.4]{RHC}. Dank der direkten Unterstützung der Keras Applications API und der Möglichkeit des Transfer Learnings von \textit{imagenet} Gewichtungen, wurden zusätzlich die von Keras implementierten VGG16 und VGG19 Netze erprobt \cite{vgg_keras}.
+\subsection{ResNet} %15.11
+Die ResNet sind spezielle Architekturen Neuronaler Netze, welche mittels Restdarstellungen (Residual Representations) durch Abkürzungsverbindungen (Shortcut Connections) die Performanz tiefer Neuronaler Netze und im besonderen Konvolutionaler Netze verbessern sollen \cite[S.1-2]{resnet}. Dabei wird eine Ausgabe welche an einem bestimmten Punkt im Netzwerk ausgegeben wurde, an einem anderen Punkt identisch vor der Aktivierungsfunktion in die Ausgabe der tieferen Schicht eingerechnet \cite[S.4]{resnet}. Diese Funktionsweise lässt sich in der Abbildung \ref{res} am Beispiel zweier Schichten erkennen.
+\begin{figure}[!htb]
+	% \centering
+	\includegraphics[width=\columnwidth]{residual}
+	\caption{Beispiel einer Abkürzungsverbindung über zwei Schichten \cite[S.2]{resnet}.}
+	\label{res}
+\end{figure}
+
+
+Ein solches Vorgehen soll den bei tiefen Neuronalen Netzen beobachteten Effekt des Zerfalls von Genauigkeiten bei einer zunehmenden Steigerung der Schichtenzahl bekämpfen \cite[S.1]{resnet}. Keras bietet in der Applications API für diese Netzarchitekturen sechs vordefinierte Modelle, welche 50, 101 bzw. 152 Schichten aufweisen \cite{resnet_keras}. Im besonderen wurde beim Trainieren ein Fokus auf die V2 Varianten dieser Modelle gesetzt, bei welchen es sich um eine Verbesserung des originalen Ansatz der ResNet handelt \cite{resnetv2}.
+\subsection{Vision Transformer} %15.11
+Vision Transformer wurden in vier verschiedenen Varianten erprobt, welche im Vision Transformer Paper dargestellt wurden. Es wurden dabei Modelle mit 12 (Base), 24 (Large) und 32 (Huge) Schichten vorgestellt, wobei die größte Variante aufgrund der wahrscheinlich nötigen Datenmenge nicht erprobt wurde. Alle Varianten der VIT mit ihren Parametern lassen sich in der Tabelle \ref{vit_sizes} erkennen. \cite[S.5]{VIT}. Die Base- und Large-Varianten wurden in der Version 16 und 32 erprobt, bei welcher es sich um die Dimensionen des Input Patchs handelt. Bei der Version 16 ist dieser 16x16 Pixel, während die Größe bei der Version 32 bei 32x32 Pixeln liegt \cite[S.5]{VIT}.
+\begin{table}[!htb]
+	\caption{Vordefinierte Varianten der Vision Transformer Modelle \cite[S.5]{VIT}.}
+	\label{vit_sizes}
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Modell & Schichten & Größe D & MLP Größe & Parameter\\
+		\hline
+		\hline
+		Base & 12 & 768 & 3072 & 86M\\
+		\hline
+		Large & 24 & 1024 & 4096 & 307M\\
+		\hline
+		Huge & 32 & 1280 & 5120 & 632M\\
+		\hline 
+	\end{tabular}
+\end{table}
+In der Praxis wurden dieses über das Pythonpaket vit-keras, welches eine einfach und ähnlich zur Keras Applications API nutzbare Definition der ViT-Modelle ermöglicht. In diesem wurden alle nötigen Varianten implementiert und die Möglichkeit offen gehalten vorerlernte ImageNet-Gewichtungen zu laden \cite{git_vit}. Hier musste allerdings der Multilayer Perceptron Kopf der Vision Transformer selber definiert werden, da sonst Probleme mit der Ausgabe des Netzes auftraten.
+\section{Ergebnisse} %16.11
+\begin{table}[!htb]
+	\caption{Ergebnisse der VGGNet Modelle in Prozent.}
+	\label{vgg_ergebnis}
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		Modell & Datensatz & Val-Acc & Test-Acc & Val-F1 & Test-F1\\
+		\hline
+		\hline
+		M7-1 & Tsai & 0 & 0 & 0 & 0\\
+		\hline
+		M7-2 & Tsai & 0 & 0 & 0 & 0\\
+		\hline
+		M9 & Tsai & 0 & 0 & 0 & 0\\
+		\hline 
+		M12 & Tsai & 0 & 0 & 0 & 0\\
+		\hline 
+		VGG16 & Tsai & 0 & 0 & 0 & 0\\
+		\hline 
+		VGG19 & Tsai & 0 & 0 & 0 & 0\\
+		\hline 
+		\hline 
+		M7-1 & Full & 0 & 0 & 0 & 0\\
+		\hline
+		M7-2 & Full & 0 & 0 & 0 & 0\\
+		\hline
+		M9 & Full & 0 & 0 & 0 & 0\\
+		\hline 
+		M12 & Full & 0 & 0 & 0 & 0\\
+		\hline 
+		VGG16 & Full & 0 & 0 & 0 & 0\\
+		\hline 
+		VGG19 & Full & 0 & 0 & 0 & 0\\
+		\hline 
+	\end{tabular}
+\end{table}
+\begin{table}[!htb]
+	\caption{Ergebnisse der ResNet Modelle in Prozent.}
+	\label{resnet_ergebnis}
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		Modell & Datensatz & Val-Acc & Test-Acc & Val-F1 & Test-F1\\
+		\hline
+		\hline
+	 	50V2 & Tsai & 0 & 0 & 0 & 0\\
+		\hline
+		101V2 & Tsai & 0 & 0 & 0 & 0\\
+		\hline
+		151V2 & Tsai & 0 & 0 & 0 & 0\\
+		\hline 
+		\hline 
+		50V2 & Full & 0 & 0 & 0 & 0\\
+		\hline
+		101V2 & Full & 0 & 0 & 0 & 0\\
+		\hline
+		151V2 & Full & 0 & 0 & 0 & 0\\
+		\hline 
+	\end{tabular}
+\end{table}
+\begin{table}[!htb]
+	\caption{Ergebnisse der ViT Modelle in Prozent.}
+	\label{vit_ergebnis}
+	\centering
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		Modell & Datensatz & Val-Acc & Test-Acc & Val-F1 & Test-F1\\
+		\hline
+		\hline
+		b16 & Tsai & 0 & 0 & 0 & 0\\
+		\hline
+		b32 & Tsai & 0 & 0 & 0 & 0\\
+		\hline
+		l16 & Tsai & 0 & 0 & 0 & 0\\
+		\hline
+		l32 & Tsai & 0 & 0 & 0 & 0\\
+		\hline 
+		\hline 
+		b16 & Full & 0 & 0 & 0 & 0\\
+		\hline
+		b32 & Full & 0 & 0 & 0 & 0\\
+		\hline
+		l16 & Full & 0 & 0 & 0 & 0\\
+		\hline
+		l32 & Full & 0 & 0 & 0 & 0\\
+		\hline 
+	\end{tabular}
+\end{table}
+\section{Fazit} %17.11
+
+%%% Literaturverzeichnis
+\bibliographystyle{IEEEtran}
+\bibliography{seminar}
+
+%% oder manuell
+%\begin{thebibliography}{1}
+%
+%\bibitem{IEEEhowto:kopka}
+%H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+%
+%\end{thebibliography}
+
+\end{document}

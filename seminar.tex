@@ -1,0 +1,125 @@
+% Master-Konferenzseminar, FH Suedwestfalen
+%
+% Vorlage ist xelatex-kompatibel
+% Literatur in seminar.bib
+% Build-Prozess:
+%  xelatex seminar; bibtex seminar; xelatex seminar; xelatex seminar
+%
+%
+\documentclass[twoside,a4paper]{IEEEtran}
+\usepackage{fontspec}
+\usepackage[ngerman]{babel}
+\usepackage{cite}
+\usepackage{xcolor}
+\usepackage{listings}
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
+\lstset{numberstyle=\tiny\color{blue},keywordstyle=\color{blue}}
+\usepackage{blindtext}  % <-- kann weg!
+\renewcommand{\thepage}{X-\arabic{page}}
+\begin{document}
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+\title{Das ist der Titel meiner \\ Seminararbeit%
+    \thanks{%
+    Dieser Beitrag entstand im 
+    Rahmen des Master"=Konferenzseminars \emph{info@swf 2022}, das im
+    Wintersemester 2021/22 vom Fachbereich Informatik und
+    Naturwissenschaften der Fachhochschule Südwestfalen
+    durchgeführt wurde.}}
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{
+  \IEEEauthorblockN{Vorname Nachname\\ }
+  \IEEEauthorblockA{Fachhochschule Südwestfalen}
+}
+
+\maketitle
+
+
+%%% Zusammenfassung
+\begin{abstract}
+  %
+\blindtext
+  %
+\end{abstract}
+
+
+%%% Text beginnt
+\section{Einleitung}
+
+This demo file is intended to serve as a ``starter file''
+for IEEE conference papers produced under \LaTeX\ using
+IEEEtran.cls version 1.7 and later \cite{tanenbaum2014modernos}.
+Wir zitieren hier außerdem aus einem Werk zur Geschichte
+von UNIX \cite{salus:0201547775:unix:history}.
+
+\Blindtext[2]
+
+Gerne verweisen wir an dieser Stelle auf eine Abbildung,
+nämlich auf die Abbildung~\ref{bild1}. Das ist wirklich eine
+schöne Abbildung.
+
+%%% Bild
+\begin{figure}[b]
+  % \centering
+  \includegraphics[width=\columnwidth]{bild}
+  \caption{Ergebnisse der Simulation}
+  \label{bild1}
+\end{figure}
+
+
+\section{Mehr Blindtext}
+
+\Blindtext[3]
+
+%%% Listing: inline
+\begin{lstlisting}[language=C,label=listing1,caption={Das ist das erste Listing (inline.c).}]
+int main () {
+  printf ("Hello World!\n");
+}
+\end{lstlisting}
+
+\Blindtext[1]
+
+
+%%% Listing: als float
+% Extra-Parameter: Zeilennummern, Listing-Zeilen 6mm einrücken
+\begin{lstlisting}[language=Bash,float={t!},label=listing1,caption={Das ist das zweite Listing (float.sh).},numbers=left,xleftmargin=6mm]
+alias ll='exa -bghHlBa'
+alias ltr='ls -ltrG'
+alias ..="cd .."
+export PATH=$PATH:/Library/TeX/texbin:/Users/esser/bin:/opt/local/bin
+\end{lstlisting}
+
+
+%%% Tabelle
+\begin{table}[t]
+  \caption{Eine Tabelle mit Beispielinhalten}
+  \label{table_example}
+  \centering
+  \begin{tabular}{|c||c|}
+    \hline
+    One & Two\\
+    \hline
+    Three & Four\\
+    \hline
+  \end{tabular}
+\end{table}
+
+
+
+%%% Literaturverzeichnis
+\bibliographystyle{IEEEtran}
+\bibliography{seminar}
+
+%% oder manuell
+%\begin{thebibliography}{1}
+%
+%\bibitem{IEEEhowto:kopka}
+%H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+%  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+%
+%\end{thebibliography}
+
+\end{document}
