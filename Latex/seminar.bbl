@@ -135,4 +135,10 @@ F.~Morales. vit-keras. [Online]. Available:
   \url{https://github.com/faustomorales/vit-keras}
 \BIBentrySTDinterwordspacing
 
+\bibitem{keras_vgg}
+\BIBentryALTinterwordspacing
+Keras. vgg16.py. [Online]. Available:
+  \url{https://github.com/keras-team/keras-applications/blob/master/keras\_applications/vgg16.py}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}
