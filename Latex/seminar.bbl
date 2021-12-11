@@ -96,6 +96,13 @@ N.~I. of~Advanced Industrial~Science, J.~E. Technology, and I.~T.~I.
   \url{http://etlcdb.db.aist.go.jp/file-formats-and-sample-unpacking-code}
 \BIBentrySTDinterwordspacing
 
+\bibitem{resnet}
+\BIBentryALTinterwordspacing
+K.~He, X.~Zhang, S.~Ren, and J.~Sun, ``Deep residual learning for image
+  recognition,'' 2015. [Online]. Available:
+  \url{https://arxiv.org/pdf/1512.03385.pdf}
+\BIBentrySTDinterwordspacing
+
 \bibitem{simonyan2015deep}
 \BIBentryALTinterwordspacing
 K.~Simonyan and A.~Zisserman, ``Very deep convolutional networks for
@@ -109,16 +116,9 @@ Keras. Vgg16 and vgg19. [Online]. Available:
   \url{https://keras.io/api/applications/vgg/}
 \BIBentrySTDinterwordspacing
 
-\bibitem{resnet}
-\BIBentryALTinterwordspacing
-K.~He, X.~Zhang, S.~Ren, and J.~Sun, ``Deep residual learning for image
-  recognition,'' 2015. [Online]. Available:
-  \url{https://arxiv.org/pdf/1512.03385.pdf}
-\BIBentrySTDinterwordspacing
-
 \bibitem{resnet_keras}
 \BIBentryALTinterwordspacing
-Keras. Resnet and resnetv2. [Online]. Available:
+------. Resnet and resnetv2. [Online]. Available:
   \url{https://keras.io/api/applications/resnet/}
 \BIBentrySTDinterwordspacing
 
