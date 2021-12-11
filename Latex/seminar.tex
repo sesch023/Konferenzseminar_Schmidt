@@ -340,7 +340,7 @@ Für die Resultate des kompletten Datensatz, welche in der Tabelle \ref{resnet_e
 
 Im Gegensatz zu den VGG-Netzen findet in der Keras Applications API in den ResNet Modellen Regularisierung per Batch-Normalisierung statt \cite{resnet_keras}. Zusätzlich nimmt die Genauigkeit beim Tsai-Datensatz mit komplexeren ResNet Modellen zu, was auch bei einer Vervollständigung des Trainings beim kompletten Datensatz der Fall seien könnte. Dies sind mögliche Indizien dafür, dass eine Verwendung noch größerer ResNet Modelle einen positiven Einfluss auf das Ergebnis haben könnte.
 \subsection{Vision Transformer}
-
+Für die Vision Transformer wurden vier verschiedene Modelle trainiert und die Ergebnisse für den Tsai-Datensatz sind in Tabelle \ref{vit_ergebnis_tsai} dargestellt. Diese konnten leider in keinster Weise die erwarteten Ergebnisse erreichen. Der beste Vision Transformer b32 konnte dabei 83,20\% und 83.58\% durchschnittlichen F1-Score erreichen und ist damit deutlich schlechter als jedes VGG oder ResNet Modell.
 \begin{table}[!htb]
 	\caption{Genauigkeit und F1-Scores der ViT Modelle für den Tsai-Datensatz in Prozent.}
 	\label{vit_ergebnis_tsai}
@@ -350,16 +350,18 @@ Im Gegensatz zu den VGG-Netzen findet in der Keras Applications API in den ResNe
 		Modell & Val-Acc & Test-Acc & Val-F1 & Test-F1\\
 		\hline
 		\hline
-		b16 & 65,78 & 65,67 & 65,67 & 71,59\\
+		b16* & 65,78 & 65,67 & 65,67 & 71,59\\
 		\hline
-		b32 & \textbf{74,76} & \textbf{75,63} & \textbf{83,20} & \textbf{83,68}\\
+		b32* & \textbf{74,76} & \textbf{75,63} & \textbf{83,20} & \textbf{83,68}\\
 		\hline
-		l16 & 69,07 & 69,10 & 74,52 & 74,83\\
+		l16* & 69,07 & 69,10 & 74,52 & 74,83\\
 		\hline
-		l32 & 70,75 & 71,28 & 81,87 & 82,13\\
+		l32* & 70,75 & 71,28 & 81,87 & 82,13\\
 		\hline 
 	\end{tabular}
 \end{table}
+
+Ähnlich sind die Ergebnisse für den kompletten Datensatz bei welchen der b32 Vision Transformer x\% und x\% erreichen konnte. Auf das Training der l32 und l16 Transformer mit dem kompletten Datensatz musste aufgrund zeitlicher Restriktionen verzichtet werden.
 \begin{table}[!htb]
 	\caption{Genauigkeit und F1-Scores der ViT Modelle für den kompletten Datensatz in Prozent.}
 	\label{vit_ergebnis_full}
@@ -369,15 +371,21 @@ Im Gegensatz zu den VGG-Netzen findet in der Keras Applications API in den ResNe
 		Modell & Val-Acc & Test-Acc & Val-F1 & Test-F1\\
 		\hline
 		\hline 
-		b16 & 0 & 0 & 0 & 0\\
+		b16* & 0 & 0 & 0 & 0\\
 		\hline
-		b32 & 0 & 0 & 0 & 0\\
+		b32* & 0 & 0 & 0 & 0\\
 		\hline 
 	\end{tabular}
 \end{table}
-\section{Fazit} %17.11
-\section{Ausblick}
 
+Für das schlechte Abschneiden der Vision Transformer in dieser Arbeit gibt es einigen Hypothesen. Zum einen benötigen Vision Transformer eine große Anzahl an Bildern, um mit CNNs vergleichbare Ergebnisse zu erreichen. Selbst der ImageNet Datensatz mit 14 Millionen Bildern \cite{IMAGENET} erreicht noch schlechtere Ergebnisse mit Vision Transformern als mit vergleichbaren CNNs \cite{JFT}. Die vorliegenden Datensätze für Kanji besitzen dagegen nur 225.000 und 1,2 Millionen Bilder. Eine weitere Möglichkeit für Probleme beim Training, könnte eine fehlende Eignung der genutzten ViT sein. Diese haben unabhängig der vorliegenden Grauwertdaten eine Eingabe von RGB-Daten verlangt, wodurch die Komplexität der Daten durch die Simulation von drei Eingabekanälen gestiegen seien könnte. Eine mögliche Nutzung anderer Bibliotheken für Vision Transformer, welche Grauwertdaten unterstützen und auf diese ausgelegt sind, könnten dieses Problem lösen. Die Nutzung von Huggingface, eine beliebte Community und Sammlung für Transformer \cite{huggingface}, und deren Python-API wäre ein möglicher nächster Schritt zur Verbesserung der Vorhandenen und dem Einsatz weiterer Transformer. Hier sollten auch Nachforschungen für spezielle Vision Transformer zur Texterkennung getroffen werden. 
+
+\section{Fazit} %17.11
+Alles in allem konnte das Projekt erfolgreich umgesetzt werden und die Ergebnisse der originalen Arbeit wurden nachvollzogen. Durch eine Simulation des Datensatz von Tsai, konnten sehr ähnliche Resultate erreicht werden, wodurch im Folgenden ein Einsätzen weiterer Modelle und eines Datensatz möglich war. Eine Nutzung neuer VGG, ResNet und Vision Transformer Modelle mit dem Datensatz, konnten leider die Ergebnisse nicht verbessern. Besonders die Vision Transformer haben sich dabei als problematisch herausgestellt. Trotzdem konnte durch die Erweiterung der genutzten Daten auf die gesamte ETL Character Database, die Klassifikation auf 3191 Schriftzeichen erweitert werden, während das beste VGG Modell für diesen Datensatz die Ergebnisse in der originalen Arbeit sogar übertreffen konnte.
+\section{Ausblick}
+In zukünftigen Arbeiten ergeben sich zwei Wege des Vorgehens. Zum einen könnte vorhandene Modelle weiter verbessert und der Einsatz weiterer Techniken erprobt werden. Hierbei ist es denkbar die VGG16 und VGG19 mit Regularisierung oder größere ResNet zu erproben. Auch ein Einsatz von Vision Transformern mit Huggingface und eine Sichtung weiterer Modelle in der Huggingface Community, wären ein möglicher nächster Schritt. Der Einsatz der implementierten Techniken der Data Augmentation und die Nutzung der durch diese vergrößerten Datensätze wären ebenfalls ein wichtiges nächstes Vorgehen. Auf ein Training dieser musste leider aufgrund begrenzter Zeit verzichtet werden, da diese, aufgrund der enormen Steigerung der Daten, bereits mehr als einen Tag Rechenzeit pro Trainingsepoche in Anspruch genommen haben. Zusätzlich wäre eine Sichtung weiterer Datensätzen für Kanji zur Erweiterung der Datenbasis ein sinnvolles Vorgehen.
+
+Ein weiterer Weg für zukünftige Arbeiten, wäre die Nutzung der erstellten Modelle für praktische Anwendungen. Da diese bereits sehr gute Ergebnisse liefern, wäre ein erster Test in einer praktischen Anwendung ein möglicher Schritt. Hierbei könnten die Modelle verwendet werden, um unbekannte Schriftzeichen analysieren und in einem Lexikon anzeigen zu lassen. Auch eine Live-Übersetzung japanischer Texte, ähnlich zur App von Google Übersetzer, wäre ein mögliches größeres Projekt, bei dem die trainierten Modelle zum Einlesen japanischer Zeichen verwendet werden können.
 %%% Literaturverzeichnis
 \bibliographystyle{IEEEtran}
 \bibliography{seminar}

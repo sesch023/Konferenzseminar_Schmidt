@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.9)  10 DEC 2021 15:11
+This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.9)  11 DEC 2021 01:23
  restricted system commands enabled.
 **seminar.tex
 (./seminar.tex
@@ -625,17 +625,17 @@ File: residual.png Graphic file (type png)
 <use residual.png>
 Package luatex.def Info: residual.png  used on input line 215.
 (luatex.def)             Requested size: 252.0pt x 135.79872pt.
- [6<./residual.png>] (./seminar.bbl [7]
+ [6<./residual.png>] [7] (./seminar.bbl
 Underfull \hbox (badness 2608) in paragraph at lines 39--43
 \TU/lmr/m/n/8 rac-ters using deep con-vo-lu-tio-nal neu-ral net-
  []
 
-
+[8]
 Underfull \hbox (badness 10000) in paragraph at lines 140--143
 \TU/lmr/m/n/8 team/keras-applications/blob/master/keras_ap-pli-ca-ti-ons-
  []
 
-) [8
+) [9
 
 ] (./seminar.aux)
 
@@ -647,14 +647,14 @@ LaTeX Warning: There were multiply-defined labels.
 )
 
 Here is how much of LuaTeX's memory you used:
- 8248 strings out of 478086
+ 8249 strings out of 478086
  244182,794899 words of node,token memory allocated
  477 words of node memory still in use:
    4 hlist, 1 vlist, 1 rule, 6 glue, 3 kern, 1 glyph, 9 attribute, 52 glue_spec,
  6 attribute_list, 1 write nodes
-   avail lists: 1:1,2:2402,3:279,4:94,5:3189,6:67,7:16221,8:1,9:5607,10:20,11:20
+   avail lists: 1:1,2:2402,3:338,4:94,5:3189,6:67,7:16221,8:1,9:5607,10:20,11:20
 74
- 28402 multiletter control sequences out of 65536+600000
+ 28403 multiletter control sequences out of 65536+600000
  76 fonts using 8937479 bytes
  70i,9n,77p,1613b,693s stack positions out of 5000i,500n,10000p,200000b,80000s
 <//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lmrom
@@ -672,9 +672,9 @@ sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lmroman12-regular.o
 tf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lm
 roman17-regular.otf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/open
 type/public/lm/lmroman7-regular.otf>
-Output written on seminar.pdf (8 pages, 2321811 bytes).
+Output written on seminar.pdf (9 pages, 2327237 bytes).
 
-PDF statistics: 127 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 130 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 

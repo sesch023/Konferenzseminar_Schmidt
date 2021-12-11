@@ -18,45 +18,45 @@ Warning--entry type for "RHC" isn't style-file defined
 Warning--empty year in MACHINE_LEARNING
 
 Done.
-You've used 18 entries,
+You've used 19 entries,
             4087 wiz_defined-function locations,
-            908 strings with 9959 characters,
-and the built_in function-call counts, 7606 in all, are:
-= -- 533
-> -- 217
+            912 strings with 10041 characters,
+and the built_in function-call counts, 7920 in all, are:
+= -- 555
+> -- 221
 < -- 3
-+ -- 104
-- -- 52
-* -- 301
-:= -- 1338
-add.period$ -- 36
-call.type$ -- 18
-change.case$ -- 17
++ -- 106
+- -- 53
+* -- 307
+:= -- 1397
+add.period$ -- 38
+call.type$ -- 19
+change.case$ -- 18
 chr.to.int$ -- 0
-cite$ -- 19
-duplicate$ -- 593
-empty$ -- 694
-format.name$ -- 61
-if$ -- 1664
+cite$ -- 20
+duplicate$ -- 619
+empty$ -- 727
+format.name$ -- 62
+if$ -- 1733
 int.to.chr$ -- 0
-int.to.str$ -- 18
-missing$ -- 154
-newline$ -- 111
-num.names$ -- 18
-pop$ -- 486
+int.to.str$ -- 19
+missing$ -- 161
+newline$ -- 116
+num.names$ -- 19
+pop$ -- 510
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 549
+skip$ -- 572
 stack$ -- 0
 substring$ -- 8
-swap$ -- 349
+swap$ -- 362
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 18
+type$ -- 19
 warning$ -- 1
-while$ -- 18
-width$ -- 20
-write$ -- 195
+while$ -- 19
+width$ -- 21
+write$ -- 204
 (There were 2 warnings)

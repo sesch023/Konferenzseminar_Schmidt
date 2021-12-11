@@ -141,4 +141,10 @@ Keras. vgg16.py. [Online]. Available:
   \url{https://github.com/keras-team/keras-applications/blob/master/keras\_applications/vgg16.py}
 \BIBentrySTDinterwordspacing
 
+\bibitem{huggingface}
+\BIBentryALTinterwordspacing
+Huggingface. The ai community building the future. [Online]. Available:
+  \url{https://huggingface.co/}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}
