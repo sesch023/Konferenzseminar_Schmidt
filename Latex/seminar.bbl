@@ -23,21 +23,21 @@
 
 \bibitem{FSI}
 \BIBentryALTinterwordspacing
-F.~S. Institute. Foreign language training. [Online]. Available:
-  \url{https://www.state.gov/foreign-language-training/}
+F.~S. Institute. Foreign language training. Aufgerufen am 09.11.2021. [Online].
+  Available: \url{https://www.state.gov/foreign-language-training/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{ABOUT_JAPANESE}
 \BIBentryALTinterwordspacing
 B.~von Japan~in Deutschland. Feature - kennen sie kanji? - zur japanischen
-  schrift. [Online]. Available:
+  schrift. Aufgerufen am 09.11.2021. [Online]. Available:
   \url{https://www.de.emb-japan.go.jp/feature/kanji.html}
 \BIBentrySTDinterwordspacing
 
 \bibitem{RHC}
 \BIBentryALTinterwordspacing
 C.~Tsai, ``Recognizing handwritten japanese characters using deep convolutional
-  neural networks.'' [Online]. Available:
+  neural networks,'' aufgerufen am 09.11.2021. [Online]. Available:
   \url{http://cs231n.stanford.edu/reports/2016/pdfs/262{\_}Report.pdf}
 \BIBentrySTDinterwordspacing
 
@@ -71,8 +71,8 @@ A.~Dosovitskiy, L.~Beyer, A.~Kolesnikov, D.~Weissenborn, X.~Zhai,
 
 \bibitem{IMAGENET}
 \BIBentryALTinterwordspacing
-P.~U. Stanford Vision~Lab, Stanford~University. Imagenet. [Online]. Available:
-  \url{https://www.image-net.org/}
+P.~U. Stanford Vision~Lab, Stanford~University. Imagenet. Aufgerufen am
+  13.11.2021. [Online]. Available: \url{https://www.image-net.org/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{JFT}
@@ -86,65 +86,72 @@ C.~Sun, A.~Shrivastava, S.~Singh, and A.~Gupta, ``Revisiting unreasonable
 \bibitem{ETL}
 \BIBentryALTinterwordspacing
 N.~I. of~Advanced Industrial~Science, J.~E. Technology, and I.~T.~I.
-  Association. About the etl character database. [Online]. Available:
-  \url{http://etlcdb.db.aist.go.jp/}
+  Association. About the etl character database. Aufgerufen am 13.11.2021.
+  [Online]. Available: \url{http://etlcdb.db.aist.go.jp/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{ETL_FORMATS}
 \BIBentryALTinterwordspacing
-------. File formats and sample script. [Online]. Available:
+------. File formats and sample script. Aufgerufen am 13.11.2021. [Online].
+  Available:
   \url{http://etlcdb.db.aist.go.jp/file-formats-and-sample-unpacking-code}
-\BIBentrySTDinterwordspacing
-
-\bibitem{resnet}
-\BIBentryALTinterwordspacing
-K.~He, X.~Zhang, S.~Ren, and J.~Sun, ``Deep residual learning for image
-  recognition,'' 2015. [Online]. Available:
-  \url{https://arxiv.org/pdf/1512.03385.pdf}
 \BIBentrySTDinterwordspacing
 
 \bibitem{simonyan2015deep}
 \BIBentryALTinterwordspacing
 K.~Simonyan and A.~Zisserman, ``Very deep convolutional networks for
-  large-scale image recognition,'' 2015. [Online]. Available:
-  \url{https://arxiv.org/abs/1409.1556e}
+  large-scale image recognition,'' 2015, aufgerufen am 16.11.2021. [Online].
+  Available: \url{https://arxiv.org/abs/1409.1556e}
 \BIBentrySTDinterwordspacing
 
 \bibitem{vgg_keras}
 \BIBentryALTinterwordspacing
-Keras. Vgg16 and vgg19. [Online]. Available:
+Keras. Vgg16 and vgg19. Aufgerufen am 16.11.2021. [Online]. Available:
   \url{https://keras.io/api/applications/vgg/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{resnet}
+\BIBentryALTinterwordspacing
+K.~He, X.~Zhang, S.~Ren, and J.~Sun, ``Deep residual learning for image
+  recognition,'' 2015, aufgerufen am 17.11.2021. [Online]. Available:
+  \url{https://arxiv.org/pdf/1512.03385.pdf}
 \BIBentrySTDinterwordspacing
 
 \bibitem{resnet_keras}
 \BIBentryALTinterwordspacing
-------. Resnet and resnetv2. [Online]. Available:
+Keras. Resnet and resnetv2. Aufgerufen am 17.11.2021. [Online]. Available:
   \url{https://keras.io/api/applications/resnet/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{resnetv2}
 \BIBentryALTinterwordspacing
 K.~He, X.~Zhang, S.~Ren, and J.~Sun, ``Identity mappings in deep residual
-  networks,'' 2016. [Online]. Available:
+  networks,'' 2016, aufgerufen am 17.11.2021. [Online]. Available:
   \url{https://arxiv.org/pdf/1603.05027.pdf}
 \BIBentrySTDinterwordspacing
 
 \bibitem{git_vit}
 \BIBentryALTinterwordspacing
-F.~Morales. vit-keras. [Online]. Available:
+F.~Morales. vit-keras. Aufgerufen am 17.11.2021. [Online]. Available:
   \url{https://github.com/faustomorales/vit-keras}
 \BIBentrySTDinterwordspacing
 
 \bibitem{keras_vgg}
 \BIBentryALTinterwordspacing
-Keras. vgg16.py. [Online]. Available:
+Keras. vgg16.py. Aufgerufen am 20.12.2021. [Online]. Available:
   \url{https://github.com/keras-team/keras-applications/blob/master/keras\_applications/vgg16.py}
+\BIBentrySTDinterwordspacing
+
+\bibitem{keras_app}
+\BIBentryALTinterwordspacing
+------. Keras applications. Aufgerufen am 20.12.2021. [Online]. Available:
+  \url{https://keras.io/api/applications/}
 \BIBentrySTDinterwordspacing
 
 \bibitem{huggingface}
 \BIBentryALTinterwordspacing
-Huggingface. The ai community building the future. [Online]. Available:
-  \url{https://huggingface.co/}
+Huggingface. The ai community building the future. Aufgerufen am 20.12.2021.
+  [Online]. Available: \url{https://huggingface.co/}
 \BIBentrySTDinterwordspacing
 
 \end{thebibliography}
