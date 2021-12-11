@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.9)  11 DEC 2021 12:43
+This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.9)  11 DEC 2021 13:23
  restricted system commands enabled.
 **seminar.tex
 (./seminar.tex
@@ -577,12 +577,12 @@ File: attention_visualized.png Graphic file (type png)
 <use attention_visualized.png>
 Package luatex.def Info: attention_visualized.png  used on input line 86.
 (luatex.def)             Requested size: 252.0pt x 240.3004pt.
-<vitimg.png, id=19, 868.53053pt x 481.8pt>
+ [2<./cnn_example.png><./attention_visualized.png>]
+<vitimg.png, id=24, 868.53053pt x 481.8pt>
 File: vitimg.png Graphic file (type png)
 <use vitimg.png>
 Package luatex.def Info: vitimg.png  used on input line 96.
 (luatex.def)             Requested size: 252.0pt x 139.79193pt.
- [2<./cnn_example.png><./attention_visualized.png>]
 <kana.png, id=25, 402.21696pt x 175.08267pt>
 File: kana.png Graphic file (type png)
 <use kana.png>
@@ -613,13 +613,13 @@ Overfull \hbox (13.20154pt too wide) in paragraph at lines 202--203
  [][] 
  []
 
-[4<./rot_scale.png>] [5<./conv_net_architectures.png>]
-<residual.png, id=42, 542.025pt x 292.09125pt>
+[4]
+<residual.png, id=37, 542.025pt x 292.09125pt>
 File: residual.png Graphic file (type png)
 <use residual.png>
 Package luatex.def Info: residual.png  used on input line 217.
 (luatex.def)             Requested size: 252.0pt x 135.79872pt.
- [6<./residual.png>]
+ [5<./rot_scale.png>] [6<./conv_net_architectures.png><./residual.png>]
 [7] (./seminar.bbl
 Underfull \hbox (badness 2608) in paragraph at lines 39--43
 \TU/lmr/m/n/8 rac-ters using deep con-vo-lu-tio-nal neu-ral net-
@@ -643,15 +643,14 @@ LaTeX Warning: There were multiply-defined labels.
 
 Here is how much of LuaTeX's memory you used:
  8249 strings out of 478086
- 244175,794899 words of node,token memory allocated
+ 244184,794899 words of node,token memory allocated
  477 words of node memory still in use:
    4 hlist, 1 vlist, 1 rule, 6 glue, 3 kern, 1 glyph, 9 attribute, 52 glue_spec,
  6 attribute_list, 1 write nodes
-   avail lists: 1:1,2:2447,3:271,4:94,5:3212,6:65,7:16341,8:1,9:5612,10:20,11:20
-78
+   avail lists: 2:2477,3:271,4:92,5:3379,6:68,7:16880,8:2,9:5647,10:20,11:2090
  28403 multiletter control sequences out of 65536+600000
  76 fonts using 8937479 bytes
- 70i,9n,77p,1613b,693s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 70i,9n,77p,1713b,693s stack positions out of 5000i,500n,10000p,200000b,80000s
 <//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lmrom
 an8-bold.otf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/pu
 blic/lm/lmmono8-regular.otf><//?/c:/users/sebas/appdata/local/programs/miktex/fo
@@ -667,7 +666,7 @@ sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lmroman12-regular.o
 tf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lm
 roman17-regular.otf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/open
 type/public/lm/lmroman7-regular.otf>
-Output written on seminar.pdf (9 pages, 2327602 bytes).
+Output written on seminar.pdf (9 pages, 2327900 bytes).
 
 PDF statistics: 130 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
