@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.9)  11 DEC 2021 01:23
+This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.9)  11 DEC 2021 12:43
  restricted system commands enabled.
 **seminar.tex
 (./seminar.tex
@@ -559,7 +559,7 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 <cnn.png, id=1, 896.49214pt x 422.00517pt>
 File: cnn.png Graphic file (type png)
 <use cnn.png>
-Package luatex.def Info: cnn.png  used on input line 62.
+Package luatex.def Info: cnn.png  used on input line 64.
 (luatex.def)             Requested size: 252.0pt x 118.62427pt.
  [1
 Non-PDF special ignored!{C:/Users/sebas/AppData/Local/MiKTeX/pdftex/config/pdfte
@@ -570,33 +570,30 @@ x.map}
 <cnn_example.png, id=17, 605.69142pt x 491.6941pt>
 File: cnn_example.png Graphic file (type png)
 <use cnn_example.png>
-Package luatex.def Info: cnn_example.png  used on input line 71.
+Package luatex.def Info: cnn_example.png  used on input line 73.
 (luatex.def)             Requested size: 252.0pt x 204.56693pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
 <attention_visualized.png, id=18, 722.7pt x 689.14607pt>
 File: attention_visualized.png Graphic file (type png)
 <use attention_visualized.png>
-Package luatex.def Info: attention_visualized.png  used on input line 84.
+Package luatex.def Info: attention_visualized.png  used on input line 86.
 (luatex.def)             Requested size: 252.0pt x 240.3004pt.
 <vitimg.png, id=19, 868.53053pt x 481.8pt>
 File: vitimg.png Graphic file (type png)
 <use vitimg.png>
-Package luatex.def Info: vitimg.png  used on input line 94.
+Package luatex.def Info: vitimg.png  used on input line 96.
 (luatex.def)             Requested size: 252.0pt x 139.79193pt.
  [2<./cnn_example.png><./attention_visualized.png>]
 <kana.png, id=25, 402.21696pt x 175.08267pt>
 File: kana.png Graphic file (type png)
 <use kana.png>
-Package luatex.def Info: kana.png  used on input line 109.
+Package luatex.def Info: kana.png  used on input line 111.
 (luatex.def)             Requested size: 252.0pt x 109.69621pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 119.
+(Font)              <8> on input line 121.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 119.
+(Font)              <6> on input line 121.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 119.
+(Font)              <5> on input line 121.
  [3<./vitimg.png><./kana.png>]
 (C:/Users/sebas/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
@@ -604,28 +601,26 @@ File: lstlang1.sty 2020/03/24 1.8d listings language file
 <rot_scale.png, id=31, 154.176pt x 154.176pt>
 File: rot_scale.png Graphic file (type png)
 <use rot_scale.png>
-Package luatex.def Info: rot_scale.png  used on input line 193.
+Package luatex.def Info: rot_scale.png  used on input line 195.
 (luatex.def)             Requested size: 252.0pt x 252.00568pt.
 <conv_net_architectures.png, id=32, 1333.55357pt x 716.24731pt>
 File: conv_net_architectures.png Graphic file (type png)
 <use conv_net_architectures.png>
-Package luatex.def Info: conv_net_architectures.png  used on input line 200.
+Package luatex.def Info: conv_net_architectures.png  used on input line 202.
 (luatex.def)             Requested size: 529.20154pt x 284.24246pt.
 
-Overfull \hbox (13.20154pt too wide) in paragraph at lines 200--201
+Overfull \hbox (13.20154pt too wide) in paragraph at lines 202--203
  [][] 
  []
 
-[4<./rot_scale.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5<./conv_net_architectures.png>]
+[4<./rot_scale.png>] [5<./conv_net_architectures.png>]
 <residual.png, id=42, 542.025pt x 292.09125pt>
 File: residual.png Graphic file (type png)
 <use residual.png>
-Package luatex.def Info: residual.png  used on input line 215.
+Package luatex.def Info: residual.png  used on input line 217.
 (luatex.def)             Requested size: 252.0pt x 135.79872pt.
- [6<./residual.png>] [7] (./seminar.bbl
+ [6<./residual.png>]
+[7] (./seminar.bbl
 Underfull \hbox (badness 2608) in paragraph at lines 39--43
 \TU/lmr/m/n/8 rac-ters using deep con-vo-lu-tio-nal neu-ral net-
  []
@@ -648,12 +643,12 @@ LaTeX Warning: There were multiply-defined labels.
 
 Here is how much of LuaTeX's memory you used:
  8249 strings out of 478086
- 244182,794899 words of node,token memory allocated
+ 244175,794899 words of node,token memory allocated
  477 words of node memory still in use:
    4 hlist, 1 vlist, 1 rule, 6 glue, 3 kern, 1 glyph, 9 attribute, 52 glue_spec,
  6 attribute_list, 1 write nodes
-   avail lists: 1:1,2:2402,3:338,4:94,5:3189,6:67,7:16221,8:1,9:5607,10:20,11:20
-74
+   avail lists: 1:1,2:2447,3:271,4:94,5:3212,6:65,7:16341,8:1,9:5612,10:20,11:20
+78
  28403 multiletter control sequences out of 65536+600000
  76 fonts using 8937479 bytes
  70i,9n,77p,1613b,693s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -672,7 +667,7 @@ sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lmroman12-regular.o
 tf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lm
 roman17-regular.otf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/open
 type/public/lm/lmroman7-regular.otf>
-Output written on seminar.pdf (9 pages, 2327237 bytes).
+Output written on seminar.pdf (9 pages, 2327602 bytes).
 
 PDF statistics: 130 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
