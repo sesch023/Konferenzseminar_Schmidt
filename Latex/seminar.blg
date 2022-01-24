@@ -12,6 +12,11 @@ Reallocating 'singl_function' (item size: 4) to 100 items.
 Database file #1: seminar.bib
 Warning--entry type for "RHC" isn't style-file defined
 --line 17 of file seminar.bib
+I was expecting a `,' or a `}'---line 164 of file seminar.bib
+ :  
+ :  note = {aufgerufen am 24.01.2022}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -20,43 +25,43 @@ Warning--empty year in MACHINE_LEARNING
 Done.
 You've used 20 entries,
             4087 wiz_defined-function locations,
-            920 strings with 10222 characters,
-and the built_in function-call counts, 8924 in all, are:
-= -- 682
-> -- 225
-< -- 3
-+ -- 108
-- -- 54
-* -- 347
-:= -- 1605
-add.period$ -- 51
+            930 strings with 10772 characters,
+and the built_in function-call counts, 11072 in all, are:
+= -- 839
+> -- 285
+< -- 29
++ -- 141
+- -- 62
+* -- 462
+:= -- 1845
+add.period$ -- 53
 call.type$ -- 20
-change.case$ -- 34
-chr.to.int$ -- 0
+change.case$ -- 41
+chr.to.int$ -- 75
 cite$ -- 21
-duplicate$ -- 690
-empty$ -- 775
-format.name$ -- 63
-if$ -- 1953
+duplicate$ -- 816
+empty$ -- 982
+format.name$ -- 74
+if$ -- 2499
 int.to.chr$ -- 0
 int.to.str$ -- 20
-missing$ -- 183
-newline$ -- 121
-num.names$ -- 20
-pop$ -- 534
+missing$ -- 200
+newline$ -- 117
+num.names$ -- 26
+pop$ -- 558
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 655
+skip$ -- 828
 stack$ -- 0
-substring$ -- 38
-swap$ -- 420
-text.length$ -- 3
+substring$ -- 217
+swap$ -- 541
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 5
 type$ -- 20
 warning$ -- 1
-while$ -- 20
+while$ -- 34
 width$ -- 22
-write$ -- 228
-(There were 2 warnings)
+write$ -- 232
+(There was 1 error message)

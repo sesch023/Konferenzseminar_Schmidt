@@ -43,21 +43,22 @@ C.~Tsai, ``Recognizing handwritten japanese characters using deep convolutional
 
 \bibitem{MACHINE_LEARNING}
 A.~Geron, \emph{Praxiseinstieg: Machine Learning mit Scikit-Learn \&
-  TensorFlow}.\hskip 1em plus 0.5em minus 0.4em\relax O'Reilly.
+  TensorFlow}.\hskip 1em plus 0.5em minus 0.4em\relax O'Reilly,
+  {Erscheinungsjahr}: 2018, ISBN: 978-3-96009-061-8.
 
 \bibitem{TRANSFORMERS}
-\BIBentryALTinterwordspacing
 A.~Vaswani, N.~Shazeer, N.~Parmar, J.~Uszkoreit, L.~Jones, A.~N. Gomez,
-  L.~Kaiser, and I.~Polosukhin, ``Attention is all you need,'' \emph{CoRR},
-  vol. abs/1706.03762, 2017. [Online]. Available:
-  \url{http://arxiv.org/abs/1706.03762}
-\BIBentrySTDinterwordspacing
+  {\L}.~Kaiser, and I.~Polosukhin, ``Attention is all you need,'' in
+  \emph{Advances in neural information processing systems}, 2017, pp.
+  5998--6008.
 
 \bibitem{RNN_ATTENTION}
 \BIBentryALTinterwordspacing
 D.~Bahdanau, K.~Cho, and Y.~Bengio, ``Neural machine translation by jointly
-  learning to align and translate,'' 2016. [Online]. Available:
-  \url{https://arxiv.org/abs/1409.0473}
+  learning to align and translate,'' in \emph{3rd International Conference on
+  Learning Representations, {ICLR} 2015, San Diego, CA, USA, May 7-9, 2015,
+  Conference Track Proceedings}, Y.~Bengio and Y.~LeCun, Eds., 2015, aufgerufen
+  am 24.01.2022. [Online]. Available: \url{http://arxiv.org/abs/1409.0473}
 \BIBentrySTDinterwordspacing
 
 \bibitem{VIT}
@@ -65,8 +66,11 @@ D.~Bahdanau, K.~Cho, and Y.~Bengio, ``Neural machine translation by jointly
 A.~Dosovitskiy, L.~Beyer, A.~Kolesnikov, D.~Weissenborn, X.~Zhai,
   T.~Unterthiner, M.~Dehghani, M.~Minderer, G.~Heigold, S.~Gelly, J.~Uszkoreit,
   and N.~Houlsby, ``An image is worth 16x16 words: Transformers for image
-  recognition at scale,'' \emph{CoRR}, vol. abs/2010.11929, 2020. [Online].
-  Available: \url{https://arxiv.org/abs/2010.11929}
+  recognition at scale,'' in \emph{9th International Conference on Learning
+  Representations, {ICLR} 2021, Virtual Event, Austria, May 3-7, 2021}.\hskip
+  1em plus 0.5em minus 0.4em\relax OpenReview.net, 2021, aufgerufen am
+  24.01.2022. [Online]. Available:
+  \url{https://openreview.net/forum?id=YicbFdNTTy}
 \BIBentrySTDinterwordspacing
 
 \bibitem{IMAGENET}
@@ -79,7 +83,7 @@ P.~U. Stanford Vision~Lab, Stanford~University. Imagenet. Aufgerufen am
 \BIBentryALTinterwordspacing
 C.~Sun, A.~Shrivastava, S.~Singh, and A.~Gupta, ``Revisiting unreasonable
   effectiveness of data in deep learning era,'' \emph{CoRR}, vol.
-  abs/1707.02968, 2017. [Online]. Available:
+  abs/1707.02968, 2017, aufgerufen am 24.01.2022. [Online]. Available:
   \url{http://arxiv.org/abs/1707.02968}
 \BIBentrySTDinterwordspacing
 
@@ -100,8 +104,10 @@ N.~I. of~Advanced Industrial~Science, J.~E. Technology, and I.~T.~I.
 \bibitem{simonyan2015deep}
 \BIBentryALTinterwordspacing
 K.~Simonyan and A.~Zisserman, ``Very deep convolutional networks for
-  large-scale image recognition,'' 2015, aufgerufen am 16.11.2021. [Online].
-  Available: \url{https://arxiv.org/abs/1409.1556e}
+  large-scale image recognition,'' in \emph{3rd International Conference on
+  Learning Representations, {ICLR} 2015, San Diego, CA, USA, May 7-9, 2015,
+  Conference Track Proceedings}, Y.~Bengio and Y.~LeCun, Eds., 2015, aufgerufen
+  am 24.01.2022. [Online]. Available: \url{http://arxiv.org/abs/1409.1556}
 \BIBentrySTDinterwordspacing
 
 \bibitem{vgg_keras}
@@ -113,7 +119,8 @@ Keras. Vgg16 and vgg19. Aufgerufen am 16.11.2021. [Online]. Available:
 \bibitem{resnet}
 \BIBentryALTinterwordspacing
 K.~He, X.~Zhang, S.~Ren, and J.~Sun, ``Deep residual learning for image
-  recognition,'' 2015, aufgerufen am 17.11.2021. [Online]. Available:
+  recognition,'' in \emph{2016 IEEE Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, 2016, pp. 770--778. [Online]. Available:
   \url{https://arxiv.org/pdf/1512.03385.pdf}
 \BIBentrySTDinterwordspacing
 
@@ -124,11 +131,10 @@ Keras. Resnet and resnetv2. Aufgerufen am 17.11.2021. [Online]. Available:
 \BIBentrySTDinterwordspacing
 
 \bibitem{resnetv2}
-\BIBentryALTinterwordspacing
 K.~He, X.~Zhang, S.~Ren, and J.~Sun, ``Identity mappings in deep residual
-  networks,'' 2016, aufgerufen am 17.11.2021. [Online]. Available:
-  \url{https://arxiv.org/pdf/1603.05027.pdf}
-\BIBentrySTDinterwordspacing
+  networks,'' in \emph{Computer Vision -- ECCV 2016}, B.~Leibe, J.~Matas,
+  N.~Sebe, and M.~Welling, Eds.\hskip 1em plus 0.5em minus 0.4em\relax Springer
+  International Publishing, 2016, pp. 630--645.
 
 \bibitem{git_vit}
 \BIBentryALTinterwordspacing
