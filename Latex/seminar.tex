@@ -33,7 +33,7 @@
 % use a multiple column layout for up to three different
 % affiliations
 \author{
-  \IEEEauthorblockN{N.N.\\ }
+  \IEEEauthorblockN{Sebastian Schmidt\\ }
   \IEEEauthorblockA{Fachhochschule Südwestfalen}
 }
 
@@ -42,7 +42,7 @@
 
 %%% Zusammenfassung
 \begin{abstract}
-Das japanische Schriftsystem ist mit drei verschiedenen Alphabeten (Hiragana, Katakana, Kanji) eines der komplexesten Schriftsysteme der Welt. Eine Person muss dabei ca. 2000 Schriftzeichen erlernen, um eine Zeitung vollständig verstehen zu können. In dem Paper „Recognizing Handwritten Japanese Characters Using Deep Convolutional Neural Networks” von Charlie Tsai wurde eine Erkennung mittels der VGGNet, speziellen Architekturen Konvolutionaler Neuronaler Netze, erprobt. Im Ansatz wurde dabei sowohl die separate Erkennung aller Alphabete als auch die gemeinsame aller möglichen Schriftzeichen erforscht. Dabei konnten Erkennungsgenauigkeiten von bis zu 99,53\% erreicht werden. In diesem Paper sollen die Ergebnisse nachvollzogen und mit weiteren Mitteln die Qualität der Modelle überprüft werden. Dies soll den Einsatz und Vergleich weiterer Netzarchitekturen wie beispielsweise der Vision Transformer oder ResNet ermöglichen. Zusätzlich wurden weitere moderne VGG und ResNet Architekturen gesichtet und mit dem implementierten Mitteln überprüft. Auch ein Einsatz weiterer Datensätze aus der vorliegenden Datenbank wurde erprobt. 
+Das japanische Schriftsystem ist mit drei verschiedenen Alphabeten (Hiragana, Katakana, Kanji) eines der komplexesten Schriftsysteme der Welt. Eine Person muss dabei ca. 2000 Schriftzeichen erlernen, um eine Zeitung vollständig verstehen zu können. In dem Paper \cite{RHC} von Charlie Tsai wurde eine Erkennung mittels der VGGNet, speziellen Architekturen Konvolutionaler Neuronaler Netze, erprobt. Im Ansatz wurde dabei sowohl die separate Erkennung aller Alphabete als auch die gemeinsame aller möglichen Schriftzeichen erforscht. Dabei konnten Erkennungsgenauigkeiten von bis zu 99,53\% erreicht werden. In diesem Paper sollen die Ergebnisse nachvollzogen und mit weiteren Mitteln die Qualität der Modelle überprüft werden. Dies soll den Einsatz und Vergleich weiterer Netzarchitekturen wie beispielsweise der Vision Transformer oder ResNet ermöglichen. Zusätzlich wurden weitere moderne VGG- und ResNet Architekturen gesichtet und mit den implementierten Mitteln überprüft. Auch ein Einsatz weiterer Datensätze aus der vorliegenden Datenbank wurde erprobt. Im Paper konnte der State of the Art F1-Score unter einer Verdreifachung der erkannten Schriftzeichen reproduziert werden.
 \end{abstract}
 
 
@@ -52,7 +52,7 @@ Die japanische Sprache ist eine der komplexesten Sprachen der Welt. Besonders f�
 
 Geteilt in drei Alphabete (Hiragana, Katakana, Kanji) muss ein Schüler des Japanischen über 2000 Schriftzeichen erlernen, um eine Zeitung ohne Hilfe lesen zu können. Dazu kommt zusätzlich im Falle der Kanji nicht nur die Bedeutung sondern auch verschiedene Lesungen, welche von einigen bis in Dutzende pro Zeichen reichen können \cite{ABOUT_JAPANESE}.
 
-Schüler des Japanischen können heutzutage auf viele Tools zurückgreifen, um ihren Lernvorgang zu unterstützen. Auch gibt es einige Apps, welche die automatische Erkennung von japanischen Schriftzeichen ermöglichen. In Charlie Tsais Paper "Recognizing Handwritten Japanese Characters Using Deep Convolutional Neural Networks" konnte dieser bis zu 99,53\% aller Schriftzeichen der ETL Character Database, einer Datenbank von handgeschriebenen japanischen Schriftzeichen, korrekt klassifizieren \cite{RHC}. Diese Ergebnisse sollen in diesem Projekt durch den Einsatz der genutzten VGGNet nachvollzogen und falls möglich durch die Nutzung weiterer Techniken wie Vision Transformer oder ResNet verbessert werden. Dazu wird zunächst auf die Grundlagen dieser Arbeit eingegangen, um im Folgenden die eingesetzten Daten darzustellen. Danach können verschiedene Modelle für das maschinelle Lernen aufgestellt und deren Ergebnisse vorgestellt werden. Schließlich wird ein Fazit und ein Ausblick auf mögliche nächste Arbeiten gegeben.
+Schüler des Japanischen können heutzutage auf viele Tools zurückgreifen, um ihren Lernvorgang zu unterstützen. Auch gibt es einige Apps, welche die automatische Erkennung von japanischen Schriftzeichen ermöglichen. In Charlie Tsais Paper \cite{RHC} konnte dieser bis zu 99,53\% aller Schriftzeichen der ETL Character Database, einer Datenbank von handgeschriebenen japanischen Schriftzeichen, korrekt klassifizieren \cite{RHC}. Diese Ergebnisse sollen in diesem Projekt durch den Einsatz der genutzten VGGNet nachvollzogen und falls möglich durch die Nutzung weiterer Techniken wie Vision Transformer oder ResNet verbessert werden. Dazu wird zunächst auf die Grundlagen dieser Arbeit eingegangen, um im Folgenden die eingesetzten Daten darzustellen. Danach können verschiedene Modelle für das maschinelle Lernen aufgestellt und deren Ergebnisse vorgestellt werden. Schließlich wird ein Fazit und ein Ausblick auf mögliche nächste Arbeiten gegeben.
 
 Für den praktischen Teil der Arbeit wurde Python 3 mit Keras und Tensorflow 2 verwendet.
 \section{Grundlagen}
@@ -63,18 +63,18 @@ Konvolutionale Neuronale Netze oder Convolutional Neural Networks (CNN) sind Neu
 \begin{figure}[!htb]
 	% \centering
 	\includegraphics[width=\columnwidth]{cnn}
-	\caption{Aufbau einer konvolutionalen Schicht mit Schrittweite eins und Zero Padding \cite[S.362]{MACHINE_LEARNING}.}
+	\caption{Aufbau einer konvolutionalen Schicht mit Schrittweite eins und Zero Padding \cite[S.362]{MACHINE_LEARNING}}
 	\label{bild1}
 \end{figure}
 
-In der Praxis haben sich die sogenannten konvolutionale Schichten mit einem bestimmten Wahrnehmungsfeld mehrere Pixel etabliert, welche  ihre Eingabe mit einer Schrittweite (Stride) analysieren und so aus den Pixeln eine neue Ausgabe erzeugen. Dieser Vorgang lässt sich in der Abbildung \ref{bild1} erkennen. Hier wird eine unterliegende Eingabe mit einem gewissen Wahrnehmungsfeld untersucht und so eine neue Ausgabe erzeugt. Diese Eingaben können beispielsweise Bilder oder Ausgaben vorherigen konvolutionaler Schichten sein. Die Eingabe des Wahrnehmungsfelds wird mittels eines sogenannten Filters gewichtet, bevor ein Ausgabepixel erzeugt wird. Filter lassen sich als kleine Bilder visualisieren, welche auf bestimmte Formen in der Ausgangsschicht reagieren \cite[S.361-363]{MACHINE_LEARNING}. 
+In der Praxis haben sich die sogenannten konvolutionalen Schichten mit einem bestimmten Wahrnehmungsfeld mehrere Pixel etabliert, welche  ihre Eingabe mit einer Schrittweite (Stride) analysieren und so aus den Pixeln eine neue Ausgabe erzeugen. Dieser Vorgang lässt sich in der Abbildung \ref{bild1} erkennen. Hier wird eine unterliegende Eingabe mit einem gewissen Wahrnehmungsfeld untersucht und so eine neue Ausgabe erzeugt. Diese Eingaben können beispielsweise Bilder oder Ausgaben vorherigen konvolutionaler Schichten sein. Die Eingabe des Wahrnehmungsfelds wird mittels eines sogenannten Filters gewichtet, bevor ein Ausgabepixel erzeugt wird. Filter lassen sich als kleine Bilder visualisieren, welche auf bestimmte Formen in der Ausgangsschicht reagieren \cite[S.361-363]{MACHINE_LEARNING}. 
 
 Je konvolutionaler Schicht können nun mehrere Filter sogenannte Feature Maps auftreten, welche die Erkennung verschiedener Formen in der vorherigen Schicht erlauben und in tieferen Schichten die Kombination vorheriger Features ermöglichen. Tatsächlich erstreckt sich nun das Wahrnehmungsfeld über alle vorherigen Feature Maps, was in einer dreidimensionalen Gewichtsmatrix resultiert \cite[S.364-365]{MACHINE_LEARNING}. Diese Art des Vorgehen erlaubt zusätzlich eine Analyse von Farbbildern mit mehreren Kanälen. Ein solches Verfahren mit einem Stapeln mehrerer Feature Maps und einer dreidimensionalen Gewichtsmatrix lässt sich in Abbildung \ref{bild2} erkennen. Es wird ersichtlich, dass sich die vorher zweidimensionalen Wahrnehmungsfelder über drei Dimensionen erstrecken und die Ausgabe einer Feature Map erzeugen. Es ist wichtig zu beachten, dass die Feature Maps unabhängig voneinander die Ausgabe der vorherigen Schicht analysieren. 
 
 \begin{figure}[!htb]
 	% \centering
 	\includegraphics[width=\columnwidth]{cnn_example}
-	\caption{Aufbau eines CNN mit drei Schichten und vielen Feature Maps \cite[S.365]{MACHINE_LEARNING}.}
+	\caption{Aufbau eines CNN mit drei Schichten und vielen Feature Maps \cite[S.365]{MACHINE_LEARNING}}
 	\label{bild2}
 \end{figure}
 
@@ -87,14 +87,14 @@ Vision Transformer (ViT) sind eine neue Technik des Maschinellen Lernens auf Bas
 \begin{figure}[!htb]
 	% \centering
 	\includegraphics[width=\columnwidth]{attention_visualized}
-	\caption{Beispiel für erlernte Attention zwischen einem englischen und französischen Satz \cite[S.6]{RNN_ATTENTION}.}
+	\caption{Beispiel für erlernte Attention zwischen einem englischen und französischen Satz \cite[S.6]{RNN_ATTENTION}}
 	\label{bildAttention}
 \end{figure}
 
 \begin{figure*}[!htb]
 	\centering
 	\includegraphics[width=2.1\columnwidth]{vitimg}
-	\caption{Grundsätzlicher Aufbau eines Vision Transformers \cite[S.3]{VIT}.}
+	\caption{Grundsätzlicher Aufbau eines Vision Transformers \cite[S.3]{VIT}}
 	\label{vitimg}
 \end{figure*}
 
@@ -116,7 +116,7 @@ Die genutzten Bilder von japanischen Schriftzeichen aus der Thesis von Charlie T
 \begin{figure}[!htb]
 	% \centering
 	\includegraphics[width=\columnwidth]{kana}
-	\caption{Extrahierte und invertierte Schriftzeichen aus der ETL Character Database \cite[S.1]{RHC}.}
+	\caption{Extrahierte und invertierte Schriftzeichen aus der ETL Character Database \cite[S.1]{RHC}}
 	\label{kana}
 \end{figure}
 
@@ -144,12 +144,12 @@ Aus den umgewandelten Daten wurden zwei verschieden aufgebaute Datensätze erste
 	\end{tabular}
 \end{table}
 
-Wie klar zu sehen ist, sind Katakana im Gegensatz zu Kanji und Hiragana von der Anzahl der Datenpunkte stark überrepräsentiert. Eine Nutzung von Klassengewichtungen, um die unterrepräsentierten Daten hervorzuheben, sollte sich daher als sinnvoll erweisen. Weiterhin stellt sich dies auch für die Katakana als möglicherweise sinnvoll heraus, da diese eine gewisse repräsentative Streuung aufweisen. Da der ETL-1 Datensatz ebenfalls Zeichen mit Beugungen (Dakuten und Handakuten) beinhaltet, besitzt der Datensatz deutlich mehr Klassen für Hiragana als Katakana, obwohl beide Alphabete sehr ähnlich aufgebaut sind. Im Gegensatz zur originale Arbeit sind hier zwei Probleme zu erkennen. Zum einem hat sich die Anzahl der Datenpunkte seit dem originalen Paper um ca. 1000 erhöht \cite[S.3]{RHC}. Da hier kein Fehler beim Vorverarbeiten der Daten erkannt werden konnte, könnte es sich um ein Hinzufügen von Daten seitens der Verwalter der ETL Character Database handeln, was auch in einer Steigerung der Klassen der Kanji um drei resultiert. Weiterhin finden sich drei Katakanatypen weniger wieder. Dies hängt mit der Darstellung ausgestorbener Zeichen im ETL-1 Datensatz zusammen, welche die Buchstaben \textit{yi} zu \textit{i}, \textit{ye} zu \textit{e} und \textit{wu} zu \textit{u} werden lassen \cite{ETL}. Hier wurden im Gegensatz zur originalen Arbeit die daraus resultierenden Beispiele zu den passenden Vokalen umgeschrieben \cite[S.3]{RHC}. Eine gleichzeitge Erhöhung der Kanji und Verringerung der Katakana um drei, hat sich nach Prüfungen als zufällig herausgestellt. 
+Wie klar zu sehen ist, sind Katakana im Gegensatz zu Kanji und Hiragana von der Anzahl der Datenpunkte stark überrepräsentiert. Eine Nutzung von Klassengewichtungen, um die unterrepräsentierten Daten hervorzuheben, sollte sich daher als sinnvoll erweisen. Weiterhin stellt sich dies auch für die Katakana als möglicherweise sinnvoll heraus, da diese eine gewisse repräsentative Streuung aufweisen. Da der ETL-1 Datensatz ebenfalls Zeichen mit Beugungen (Da\-ku\-ten und Han\-da\-ku\-ten; Veränderungen an Zeichen, welche sich mit den deutschen Umlauten vergleichen lassen) beinhaltet, besitzt der Datensatz deutlich mehr Klassen für Hiragana als Katakana, obwohl beide Alphabete sehr ähnlich aufgebaut sind. Im Gegensatz zur originale Arbeit sind hier zwei Probleme zu erkennen. Zum einem hat sich die Anzahl der Datenpunkte seit dem originalen Paper um ca. 1000 erhöht \cite[S.3]{RHC}. Da hier kein Fehler beim Vorverarbeiten der Daten erkannt werden konnte, könnte es sich um ein Hinzufügen von Daten seitens der Verwalter der ETL Character Database handeln, was auch in einer Steigerung der Klassen der Kanji um drei resultiert. Weiterhin finden sich drei Katakanatypen weniger wieder. Dies hängt mit der Darstellung ausgestorbener Zeichen im ETL-1 Datensatz zusammen, welche die Buchstaben \textit{yi} zu \textit{i}, \textit{ye} zu \textit{e} und \textit{wu} zu \textit{u} werden lassen \cite{ETL}. Hier wurden im Gegensatz zur originalen Arbeit die daraus resultierenden Beispiele zu den passenden Vokalen umgeschrieben \cite[S.3]{RHC}. Eine gleichzeitge Erhöhung der Kanji und Verringerung der Katakana um drei, hat sich nach Prüfungen als zufällig herausgestellt. 
 
 Mit diesem ersten Datensatz können einige praktische Probleme nicht gelöst werden. Soll Maschinelles Lernen zum Übersetzen von Sprache eingesetzt werden, so ist es nötig, die meisten Aspekte dieser Sprache zu berücksichtigen. Heutzutage hat sich das lateinische Alphabet in viele Aspekte der japanischen Sprache etabliert. Eine reine Erkennung japanischer Zeichen ist daher für praktische Anwendungen eher weniger sinnvoll. Auch Satzzeichen und Sonderzeichen wurden im originalen Datensatz nicht berücksichtigt, obwohl diese für ein späteres Verständnis ganzer Sätze essenziell sind. Zuletzt beinhaltet der Datensatz lediglich 881 der 2136 üblich genutzten Kanji \cite[S.3]{RHC}. Da die ETL Character Database noch weitere Datenpunkte beinhaltet, wurde sich entschieden, in einem weiteren Datensatz die gesamte Datenbank zu nutzen. Der Aufbau dieser Gesamtauswahl lässt sich in Tabelle \ref{data_total} erkennen.
 
 \begin{table}[!htb]
-	\caption{Aufbau des zweiten Datensatz als Gesamtauswahl der ETL Character Database.}
+	\caption{Aufbau des zweiten Datensatz als Gesamtauswahl der ETL Character Database}
 	\label{data_total}
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
@@ -201,13 +201,13 @@ Die Transformationsmatrizen würden bei der beispielhaften Anwendung auf dem Kan
 \begin{figure}[!htb]
 	% \centering
 	\includegraphics[width=\columnwidth]{rot_scale}
-	\caption{Transformationen des Kanji \textit{zwei Stück}.}
+	\caption{Transformationen des Kanji \textit{zwei Stück}}
 	\label{rot}
 \end{figure}
 \section{Eingesetzte Modelle}
 In den vorherigen beiden Kapitel wurde die technologische- sowie Datengrundlage für die Arbeit gelegt. Diese Grundlagen erlauben nun eine eigene Definition von Modellen, welche im nächsten Kapitel hervorgehoben werden. 
 
-Im Gegensatz zur originalen Arbeit von Charlie Tsai, wurde sich aufgrund der guten Ergebnisse bei einer gemeinsamen Erkennung aller Alphabete gegen die Nutzung von separaten Modellen für Kanji, Katakana und Hiragana entschieden. Dieses Vorgehen würde ein zusätzliches Modell zur Unterscheidung von Alphabeten benötigen und daher insgesamt vier Modelle voraussetzen. Da die Ergebnisse für die Erkennung aller Alphabete laut Tsais Arbeit bereits bei sehr hohen 99,53\% in den Testdaten lagen, wurde sich gegen einen separaten Ansatz entschieden, um den Fokus auf die Erkennung aller Zeichen zu legen \cite[S.4-6]{RHC}. Aufgrund der teilweise hohen Streuung der Häufigkeiten von Datenpunkten, wurden alle Ansätze mit Klassengewichtungen erprobt. Dies ist nötig, damit jedes Schriftzeichen unabhängig von der Häufigkeit im Datensatz in etwa gleich gut erkannt werden kann.
+Im Gegensatz zur originalen Arbeit von Charlie Tsai, wurde aufgrund der guten Ergebnisse bei einer gemeinsamen Erkennung aller Alphabete die Nutzung von separaten Modellen für Kanji, Katakana und Hiragana ausgeschlossen. Dieses Vorgehen würde ein zusätzliches Modell zur Unterscheidung von Alphabeten benötigen und daher insgesamt vier Modelle voraussetzen. Da die Ergebnisse für die Erkennung aller Alphabete laut Tsais Arbeit bereits bei sehr hohen 99,53\% in den Testdaten lagen, wurde sich gegen einen separaten Ansatz entschieden, um den Fokus auf die Erkennung aller Zeichen zu legen \cite[S.4-6]{RHC}. Aufgrund der teilweise hohen Streuung der Häufigkeiten von Datenpunkten, wurden alle Ansätze mit Klassengewichtungen erprobt. Dies ist nötig, damit jedes Schriftzeichen unabhängig von der Häufigkeit im Datensatz in etwa gleich gut erkannt werden kann.
 
 Während des Lernvorgangs wurden die Daten in 80\% Trainings- und jeweils 10\% Validierungs- und Testdaten aufgeteilt. Alle Modelle wurden mit einem Adam-Optimizer, einem beliebten Optimierungsalgorithmus für Neuronale Netze, trainiert, welcher auch in Tsais Arbeit genutzt wurde \cite[S.4]{RHC}. Die Startlernrate wurde dabei von Modell zu Modell angepasst. Es wurde weiterhin eine zerfallende Lernrate genutzt, welche alle 20 Epochen die Rate auf ein 0,9-Faches des ursprünglichen Wertes reduziert. Dies ist am Vorgehen von Tsai angelehnt \cite[S.4]{RHC}. Die Genauigkeit und der Verlust auf den Validierungsdaten wird mit jeder Epoche berechnet und dient als Maß des Fortschritt während des Trainings. Ein Training wird automatisch abgebrochen, falls nach 20 Epochen keine Verbesserung des Verlusts auftritt. Nach dem Training wird eine Übersicht generiert, welche den ungewichteten Durchschnitt des F1-Scores aller Klassen auf den Validierungsdaten als auch für einen späteren Vergleich zwischen den Modellen auf den Testdaten beinhaltet. Zusätzlich wird die Gesamtgenauigkeit ausgegeben.
 
@@ -219,14 +219,14 @@ In Tsais Arbeit wurden 11 VGGNet artige Netze umgesetzt, welche in der Abbildung
 \begin{figure}[!htb]
 	% \centering
 	\includegraphics[width=\columnwidth]{residual}
-	\caption{Beispiel einer Abkürzungsverbindung über zwei Schichten \cite[S.2]{resnet}.}
+	\caption{Beispiel einer Abkürzungsverbindung über zwei Schichten \cite[S.2]{resnet}}
 	\label{res}
 \end{figure}
 
 \begin{figure*}[!htb]
 	\centering
 	\includegraphics[width=2.1\columnwidth]{conv_net_architectures}
-	\caption{Genutzte VGGNet Architekturen im Paper von Charlie Tsai \cite[S.3]{RHC}.}
+	\caption{Genutzte VGGNet Architekturen im Paper von Charlie Tsai \cite[S.3]{RHC}}
 	\label{vggnet}
 \end{figure*}
 
@@ -237,7 +237,7 @@ Ein solches Vorgehen soll den bei tiefen Neuronalen Netzen beobachteten Effekt d
 \subsection{Vision Transformer} %15.11
 Vision Transformer wurden in vier verschiedenen Varianten erprobt, welche im zugehörigen Paper dargestellt wurden. Es wurden dabei Modelle mit 12 (Base), 24 (Large) und 32 (Huge) Schichten vorgestellt, wobei die größte Variante aufgrund der nötigen Datenmenge nicht erprobt wurde. Alle Varianten der ViT mit ihren Parametern lassen sich in der Tabelle \ref{vit_sizes} erkennen. \cite[S.5]{VIT}. Die Base- und Large-Varianten wurden in der Version 16 und 32 erprobt, bei welcher es sich um die Dimensionen des Input Patches handelt. Bei der Version 16 ist dieser 16x16 Pixel, während die Größe bei der Version 32 bei 32x32 Pixeln liegt \cite[S.5]{VIT}. 
 \begin{table}[!htb]
-	\caption{Vordefinierte Varianten der Vision Transformer Modelle \cite[S.5]{VIT}.}
+	\caption{Vordefinierte Varianten der Vision Transformer Modelle \cite[S.5]{VIT}}
 	\label{vit_sizes}
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
@@ -261,8 +261,9 @@ Die Ergebnisse aller trainierten Modelle werden im Folgenden dargestellt. Hierbe
 \subsection{VGGNet}
 
 Mittels des Tsai-Datensatz und der definierten VGG Netzen konnten sehr ähnliche Ergebnisse zum originalen Paper von Tsai erarbeitet werden. Es wurden für diesen Datensatz insgesamt sechs VGG Modelle trainiert, deren Ergebnisse in der Tabelle \ref{vgg_ergebnis_tsai} dargestellt werden.
+
 \begin{table}[!htb]
-	\caption{Genauigkeit und F1-Scores der VGGNet Modelle für den Tsai-Datensatz in Prozent.}
+	\caption{Genauigkeit und F1-Scores der VGGNet Modelle für den Tsai-Datensatz in Prozent}
 	\label{vgg_ergebnis_tsai}
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
@@ -285,11 +286,11 @@ Mittels des Tsai-Datensatz und der definierten VGG Netzen konnten sehr ähnliche
 	\end{tabular}
 \end{table}
 
-Das beste Modell M7-1 im originalen Paper konnte statt mit einer Genauigkeit von 99,39\% und 99,53\% nur einen durchschnittlichen F1-Score von 98,92\% und 98,87\% erreichen. Stattdessen konnte das Modell M12 mit 99,34\% und 99,31\% sehr vergleichbare Ergebnisse erlangen, während es in Tsais Paper schlechter abschnitt. Eine Abweichung von über einem halben Prozent im M7-1 ist bei Modellen, die schnell eine Genauigkeit von über 95\% erreichen enorm und eine zufällige Schwankung ist eher auszuschließen. Unterschiede beim Vorverarbeiten der Daten oder bei der Regularisierung, Techniken wie Dropout oder Batch-Normalisierung die einem Overfitting entgegenwirken können \cite[S.27]{MACHINE_LEARNING}, in den Modellen, sind hierbei wahrscheinliche Hypothesen für die unterschiedlichen Ergebnisse. Unterschiede bei der Regularisierung könnte dabei ebenfalls eine Erklärung für das besseres Abschneiden des M12 Modells sein. Die Modelle M7-2 und M9 liegen von ihren Ergebnissen zwischen M7-1 sowie M12 und weichen nicht viel von den des originalen Papers ab. Die zusätzlichen über Keras Applications API eingesetzten Modelle VGG16 und VGG19 schnitten durchweg schlechter als die vorher definierten Modelle ab. Da diese keine eingebaute Regularisierung bieten \cite{keras_vgg} und sie deutlich größer als die anderen Modelle ausfallen, könnte ein früheres Overfitting eine Erklärung für diese Ergebnisse sein.
+Das beste Modell M7-1 im originalen Paper konnte statt mit einer Genauigkeit von 99,39\% und 99,53\% nur einen durchschnittlichen F1-Score von 98,92\% und 98,87\% erreichen. Stattdessen konnte das Modell M12 mit 99,34\% und 99,31\% sehr vergleichbare Ergebnisse erlangen, während es in Tsais Paper schlechter abschnitt. Eine Abweichung von über einem halben Prozent im M7-1 ist bei Modellen, die schnell eine Genauigkeit von über 95\% erreichen enorm und eine zufällige Schwankung ist eher auszuschließen. Es könnten Unterschiede beim Vorverarbeiten der Daten oder bei der Regularisierung, Techniken wie Dropout oder Batch-Normalisierung die einem Overfitting entgegenwirken können \cite[S.27]{MACHINE_LEARNING}, aufgetreten sein. Dies wäre eine mögliche Hypothese für die unterschiedlichen Ergebnisse. Unterschiede bei der Regularisierung könnte dabei ebenfalls eine Erklärung für das besseres Abschneiden des M12 Modells sein. Die Modelle M7-2 und M9 liegen von ihren Ergebnissen zwischen M7-1 sowie M12 und weichen nicht viel von den des originalen Papers ab. Die zusätzlichen über Keras Applications API eingesetzten Modelle VGG16 und VGG19 schnitten durchweg schlechter als die vorher definierten Modelle ab. Da diese keine eingebaute Regularisierung bieten \cite{keras_vgg} und sie deutlich größer als die anderen Modelle ausfallen, könnte ein früheres Overfitting eine Erklärung für diese Ergebnisse sein.
 
 Für den größeren kompletten Datensatz wurden dieselben VGG Netze genutzt, wobei einige Modelle aufgrund hoher Rechenzeit nicht mehr zu Ende trainiert werden konnten. Die Ergebnisse dazu werden in der Tabelle \ref{vgg_ergebnis_full} dargestellt.
 \begin{table}[!htb]
-	\caption{Genauigkeit und F1-Scores der VGGNet Modelle für den kompletten Datensatz in Prozent.}
+	\caption{Genauigkeit und F1-Scores der VGGNet Modelle für den kompletten Datensatz in Prozent}
 	\label{vgg_ergebnis_full}
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
@@ -312,12 +313,20 @@ Für den größeren kompletten Datensatz wurden dieselben VGG Netze genutzt, wob
 	\end{tabular}
 \end{table}
 
-Dieser Datensatz konnte trotz seiner Größe nahezu durchweg bessere Ergebnisse wie der Tsai-Datensatz liefern. Hier ist erneut das M12 Modell das Beste, welches mit 99,51\% und 99,54\% etwas bessere Ergebnisse im Vergleich zur originalen Arbeit liefert. Aber auch das M7-1 konnte die Ergebnisse verbessern und angleichen. Die anderen Modelle behalten das im vorherigen Abschnitt bezeichnete Verhalten bei, wobei die Ergebnisse leicht verbessert wurden.
+Dieser Datensatz konnte trotz seiner Größe nahezu durchweg bessere Ergebnisse wie der Tsai-Datensatz liefern. Hier ist erneut das M12 Modell das Beste, welches mit 99,51\% und 99,54\% etwas bessere Ergebnisse im Vergleich zur originalen Arbeit liefert. Aber auch das M7-1 konnte die Ergebnisse verbessern und angleichen. Die anderen Modelle behalten das im vorherigen Abschnitt bezeichnete Verhalten bei, wobei die Ergebnisse leicht verbessert wurden. Es sei zusätzlich zu beachten, dass über eine Weiterführung des Trainings des M7-2 Modells noch eine leichte Verbesserung stattfinden könnte. Dies ist in Abbildung \ref{loss} zu erkennen, in welcher der Verlust über weiteren Epochen noch weiter sinken könnte.
+
+\begin{figure}[!htb]
+	\centering
+	\includegraphics[width=\columnwidth]{loss}
+	\caption{Verlust des M7-2 Modells während des Trainings über den kompletten Datensatz.}
+	\label{loss}
+\end{figure}
+
 \subsection{ResNet}
 
 Die Ergebnisse der vorher genannten ResNet Modelle 50V2, 101V2 und 151V2 aus der Keras Applications API für den Tsai-Datensatz sind in der Tabelle \ref{resnet_ergebnis_tsai} dargestellt.
 \begin{table}[!htb]
-	\caption{Genauigkeit und F1-Scores der ResNet Modelle für den Tsai-Datensatz in Prozent.}
+	\caption{Genauigkeit und F1-Scores der ResNet Modelle für den Tsai-Datensatz in Prozent}
 	\label{resnet_ergebnis_tsai}
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
@@ -337,7 +346,7 @@ Das 151V2 konnte von diesen die besten Ergebnisse erreichen. Diese sind mit 98,9
 
 Für die Resultate des kompletten Datensatz, welche in der Tabelle \ref{resnet_ergebnis_full} dargestellt werden, sieht dieses Bild etwas anders aus. Hier liefert das 101V2 Modell leicht bessere Ergebnisse wie das 151V2, obwohl beide Modelle dieselbe (verkürzte) Zeit trainiert wurden. Es ist dabei allerdings durchaus möglich, dass bei einer Beendigung des Trainings eine deutliche Verbesserung des 151V2 stattfinden würde, was die Resultate zum Tsai-Datensatz spiegelt.
 \begin{table}[!htb]
-	\caption{Genauigkeit und F1-Scores der ResNet Modelle für den kompletten Datensatz in Prozent.}
+	\caption{Genauigkeit und F1-Scores der ResNet Modelle für den kompletten Datensatz in Prozent}
 	\label{resnet_ergebnis_full}
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
@@ -358,7 +367,7 @@ Im Gegensatz zu den VGG-Netzen findet in der Keras Applications API in den ResNe
 \subsection{Vision Transformer}
 Für die Vision Transformer wurden vier verschiedene Modelle trainiert und deren Ergebnisse für den Tsai-Datensatz sind in Tabelle \ref{vit_ergebnis_tsai} dargestellt. Diese konnten in keiner Weise die erwarteten Ergebnisse erlangen. Der beste Vision Transformer b32 konnte dabei 83,20\% und 83.58\% durchschnittlichen F1-Score erreichen und ist damit deutlich schlechter als jedes VGG oder ResNet Modell.
 \begin{table}[!htb]
-	\caption{Genauigkeit und F1-Scores der ViT Modelle für den Tsai-Datensatz in Prozent.}
+	\caption{Genauigkeit und F1-Scores der ViT Modelle für den Tsai-Datensatz in Prozent}
 	\label{vit_ergebnis_tsai}
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
@@ -379,7 +388,7 @@ Für die Vision Transformer wurden vier verschiedene Modelle trainiert und deren
 
 Ähnlich sind die Ergebnisse für den kompletten Datensatz, bei welchen der b32 Vision Transformer 88,61\% und 88,79\% erreichen konnte. Hier ist allerdings bereits zu erkennen, dass eine Steigerung der Daten mittels des kompletten Datensatzes einen positiven Effekt erzeugt. Auf das Training der l32 und l16 Transformer mit dem zweiten Datensatz musste aufgrund zeitlicher Restriktionen verzichtet werden.
 \begin{table}[!htb]
-	\caption{Genauigkeit und F1-Scores der ViT Modelle für den kompletten Datensatz in Prozent.}
+	\caption{Genauigkeit und F1-Scores der ViT Modelle für den kompletten Datensatz in Prozent}
 	\label{vit_ergebnis_full}
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
@@ -401,7 +410,7 @@ Alles in allem konnte das Projekt erfolgreich umgesetzt werden und die Ergebniss
 \section{Ausblick}
 In zukünftigen Arbeiten ergeben sich zwei Wege des Vorgehens. Zum einen könnten vorhandene Modelle weiter verbessert und der Einsatz weiterer Techniken erprobt werden. Hierbei ist es denkbar, die VGG16 und VGG19 mit Regularisierung oder größere ResNet zu erproben. Auch ein Einsatz von Vision Transformern mit Huggingface und eine Sichtung weiterer Modelle in der Huggingface Community, wären ein möglicher nächster Schritt. Der Einsatz der implementierten Techniken der Data Augmentation und die Nutzung der durch diese vergrößerten Datensätze wären ebenfalls ein wichtiges nächstes Vorgehen. Auf ein Training dieser musste aufgrund begrenzter Zeit verzichtet werden, da diese durch die enorme Steigerung der Daten bereits mehr als einen Tag Rechenzeit pro Trainingsepoche in Anspruch genommen haben. Zusätzlich wäre eine Sichtung weiterer Datensätzen für Kanji zur Erweiterung der Datenbasis ein sinnvolles Vorgehen.
 
-Ein weiterer Weg für zukünftige Arbeiten wäre die Nutzung der erstellten Modelle für praktische Anwendungen. Da diese bereits sehr gute Ergebnisse liefern, wäre ein erster Test in einer praktischen Anwendung ein möglicher Schritt. Hierbei könnten die Modelle verwendet werden, um dem Nutzer unbekannte Schriftzeichen zu analysieren und in einem Lexikon anzeigen zu lassen. Auch eine Live-Übersetzung japanischer Texte, ähnlich zur App von Google Übersetzer, wäre ein mögliches größeres Projekt, bei dem die trainierten Modelle zum Einlesen japanischer Zeichen verwendet werden könnten.
+Ein weiterer Weg für zukünftige Arbeiten wäre die Nutzung der erstellten Modelle für praktische Anwendungen. Da diese bereits sehr gute Ergebnisse liefern, wäre ein erster Test in einer praktischen Anwendung ein möglicher Schritt. Hierbei könnten die Modelle verwendet werden, um dem Nutzer unbekannte Schriftzeichen zu analysieren und in einem Lexikon anzeigen zu lassen. Auch eine Live-Übersetzung japanischer Texte, ähnlich zur App von Google Übersetzer, wäre ein mögliches größeres Projekt, bei dem die trainierten Modelle zum Einlesen japanischer Zeichen verwendet werden könnten. In diesen Bereichen wäre auch eine Nutzung von Kontextinformationen möglich, die es aufgrund der Position und Nachbarn eines Zeichens in einem Satz wahrscheinlicher machen, dass ein bestimmter Zeichentyp vorliegt. So ist es beispielsweise relativ wahrscheinlich, dass nach einem Kanjiverb Hiragana als Verbendungen folgen.
 %%% Literaturverzeichnis
 \bibliographystyle{IEEEtran}
 \bibliography{seminar}

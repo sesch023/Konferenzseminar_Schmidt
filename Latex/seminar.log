@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.9)  24 JAN 2022 14:29
+This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.9)  26 JAN 2022 13:07
  restricted system commands enabled.
 **seminar.tex
 (./seminar.tex
@@ -560,18 +560,18 @@ Non-PDF special ignored!{C:/Users/sebas/AppData/Local/MiKTeX/pdftex/config/pdfte
 x.map}
 
 
-]
-<cnn_example.png, id=16, 605.69142pt x 491.6941pt>
+<./cnn.png>]
+<cnn_example.png, id=17, 605.69142pt x 491.6941pt>
 File: cnn_example.png Graphic file (type png)
 <use cnn_example.png>
 Package luatex.def Info: cnn_example.png  used on input line 76.
 (luatex.def)             Requested size: 252.0pt x 204.56693pt.
-<attention_visualized.png, id=17, 722.7pt x 689.14607pt>
+<attention_visualized.png, id=18, 722.7pt x 689.14607pt>
 File: attention_visualized.png Graphic file (type png)
 <use attention_visualized.png>
 Package luatex.def Info: attention_visualized.png  used on input line 89.
 (luatex.def)             Requested size: 252.0pt x 240.3004pt.
-<vitimg.png, id=18, 868.53053pt x 481.8pt>
+<vitimg.png, id=19, 868.53053pt x 481.8pt>
 File: vitimg.png Graphic file (type png)
 <use vitimg.png>
 Package luatex.def Info: vitimg.png  used on input line 96.
@@ -581,7 +581,7 @@ Overfull \hbox (13.20154pt too wide) in paragraph at lines 96--97
  [][] 
  []
 
-[2<./cnn.png><./cnn_example.png>]
+[2<./cnn_example.png>]
 <kana.png, id=24, 402.21696pt x 175.08267pt>
 File: kana.png Graphic file (type png)
 <use kana.png>
@@ -640,27 +640,36 @@ Overfull \hbox (13.20154pt too wide) in paragraph at lines 228--229
 [6<./residual.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7<./conv_net_architectures.png>] [8] (./seminar.bbl
+ [7<./conv_net_architectures.png>]
+<loss.png, id=51, 462.528pt x 346.896pt>
+File: loss.png Graphic file (type png)
+<use loss.png>
+Package luatex.def Info: loss.png  used on input line 320.
+(luatex.def)             Requested size: 252.0pt x 189.00427pt.
+ [8<./loss.png>] (./seminar.bbl [9]
 Underfull \hbox (badness 3919) in paragraph at lines 147--150
 \TU/lmr/m/n/8 line]. Available: https://-git-hub.com/keras-team/keras-
  []
 
-) [9] (./seminar.aux)
+) [10
+
+] (./seminar.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 )
 
 Here is how much of LuaTeX's memory you used:
- 8252 strings out of 478086
- 244181,794899 words of node,token memory allocated
+ 8265 strings out of 478086
+ 244184,794899 words of node,token memory allocated
  477 words of node memory still in use:
    4 hlist, 1 vlist, 1 rule, 6 glue, 3 kern, 1 glyph, 9 attribute, 52 glue_spec,
  6 attribute_list, 1 write nodes
-   avail lists: 2:2087,3:412,4:92,5:3217,6:62,7:18565,8:1,9:5406,10:20,11:2389
- 28406 multiletter control sequences out of 65536+600000
+   avail lists: 1:1,2:2087,3:273,4:88,5:3196,6:62,7:16352,8:1,9:5404,10:20,11:20
+66
+ 28413 multiletter control sequences out of 65536+600000
  76 fonts using 8937479 bytes
- 70i,9n,77p,1631b,693s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 70i,9n,77p,1720b,693s stack positions out of 5000i,500n,10000p,200000b,80000s
 <//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lmrom
 an8-bold.otf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/pu
 blic/lm/lmmono8-regular.otf><//?/c:/users/sebas/appdata/local/programs/miktex/fo
@@ -676,9 +685,9 @@ sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lmroman12-regular.o
 tf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lm
 roman17-regular.otf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/open
 type/public/lm/lmroman7-regular.otf>
-Output written on seminar.pdf (9 pages, 2333471 bytes).
+Output written on seminar.pdf (10 pages, 2348364 bytes).
 
-PDF statistics: 130 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 135 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 
