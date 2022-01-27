@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.9)  26 JAN 2022 13:07
+This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.9)  27 JAN 2022 17:44
  restricted system commands enabled.
 **seminar.tex
 (./seminar.tex
@@ -550,12 +550,17 @@ fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 \c@lstlisting=\count315
+
+Underfull \hbox (badness 1590) in paragraph at lines 61--62
+[]\TU/lmr/m/it/10 Kon-vo-lu-tio-na-le Neu-ro-na-le Net-ze \TU/ptm/bx/it/10 oder \TU/lmr/m/it/10 Con-vo-lu-tio-nal
+ []
+
 <cnn.png, id=1, 896.49214pt x 422.00517pt>
 File: cnn.png Graphic file (type png)
 <use cnn.png>
 Package luatex.def Info: cnn.png  used on input line 65.
 (luatex.def)             Requested size: 252.0pt x 118.62427pt.
- [1
+[1
 Non-PDF special ignored!{C:/Users/sebas/AppData/Local/MiKTeX/pdftex/config/pdfte
 x.map}
 
@@ -585,39 +590,39 @@ Overfull \hbox (13.20154pt too wide) in paragraph at lines 96--97
 <kana.png, id=24, 402.21696pt x 175.08267pt>
 File: kana.png Graphic file (type png)
 <use kana.png>
-Package luatex.def Info: kana.png  used on input line 118.
+Package luatex.def Info: kana.png  used on input line 117.
 (luatex.def)             Requested size: 252.0pt x 109.69621pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 128.
+(Font)              <8> on input line 127.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 128.
+(Font)              <6> on input line 127.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 128.
+(Font)              <5> on input line 127.
  [3<./attention_visualized.png>]
+
+LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
+(Font)              using `TU/lmr/m/scsl' instead on input line 151.
+
+
 Underfull \vbox (badness 1137) has occurred while \output is active []
 
-
-(C:/Users/sebas/AppData/Local/Programs/MiKTeX/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2020/03/24 1.8d listings language file
-)
-[4<./vitimg.png><./kana.png>]
-<rot_scale.png, id=34, 154.176pt x 154.176pt>
+<rot_scale.png, id=29, 154.176pt x 154.176pt>
 File: rot_scale.png Graphic file (type png)
 <use rot_scale.png>
-Package luatex.def Info: rot_scale.png  used on input line 203.
+Package luatex.def Info: rot_scale.png  used on input line 177.
 (luatex.def)             Requested size: 252.0pt x 252.00568pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 208--209
+ [4<./vitimg.png><./kana.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 182--183
 []\TU/ptm/bx/it/10 In den vor-he-ri-gen bei-den Ka-pi-tel wur-de die
  []
 
 
-Underfull \hbox (badness 2790) in paragraph at lines 208--209
+Underfull \hbox (badness 2790) in paragraph at lines 182--183
 \TU/ptm/bx/it/10 technologische- so-wie Da-ten-grund-la-ge für die Ar-beit
  []
 
 
-Underfull \hbox (badness 3838) in paragraph at lines 208--209
+Underfull \hbox (badness 3838) in paragraph at lines 182--183
 \TU/ptm/bx/it/10 ge-legt. Die-se Grund-la-gen er-lau-ben nun ei-ne ei-ge-ne
  []
 
@@ -625,33 +630,31 @@ Underfull \hbox (badness 3838) in paragraph at lines 208--209
 <residual.png, id=40, 542.025pt x 292.09125pt>
 File: residual.png Graphic file (type png)
 <use residual.png>
-Package luatex.def Info: residual.png  used on input line 221.
+Package luatex.def Info: residual.png  used on input line 195.
 (luatex.def)             Requested size: 252.0pt x 135.79872pt.
 <conv_net_architectures.png, id=41, 1333.55357pt x 716.24731pt>
 File: conv_net_architectures.png Graphic file (type png)
 <use conv_net_architectures.png>
-Package luatex.def Info: conv_net_architectures.png  used on input line 228.
+Package luatex.def Info: conv_net_architectures.png  used on input line 202.
 (luatex.def)             Requested size: 529.20154pt x 284.24246pt.
 
-Overfull \hbox (13.20154pt too wide) in paragraph at lines 228--229
+Overfull \hbox (13.20154pt too wide) in paragraph at lines 202--203
  [][] 
  []
 
 [6<./residual.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [7<./conv_net_architectures.png>]
-<loss.png, id=51, 462.528pt x 346.896pt>
+<loss.png, id=46, 462.528pt x 346.896pt>
 File: loss.png Graphic file (type png)
 <use loss.png>
-Package luatex.def Info: loss.png  used on input line 320.
+Package luatex.def Info: loss.png  used on input line 294.
 (luatex.def)             Requested size: 252.0pt x 189.00427pt.
- [8<./loss.png>] (./seminar.bbl [9]
+ [7<./conv_net_architectures.png>] [8<./loss.png>]
+(./seminar.bbl
 Underfull \hbox (badness 3919) in paragraph at lines 147--150
 \TU/lmr/m/n/8 line]. Available: https://-git-hub.com/keras-team/keras-
  []
 
-) [10
+[9]) [10
 
 ] (./seminar.aux)
 
@@ -660,32 +663,31 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 )
 
 Here is how much of LuaTeX's memory you used:
- 8265 strings out of 478086
- 244184,794899 words of node,token memory allocated
+ 7956 strings out of 478086
+ 156265,794899 words of node,token memory allocated
  477 words of node memory still in use:
    4 hlist, 1 vlist, 1 rule, 6 glue, 3 kern, 1 glyph, 9 attribute, 52 glue_spec,
  6 attribute_list, 1 write nodes
-   avail lists: 1:1,2:2087,3:273,4:88,5:3196,6:62,7:16352,8:1,9:5404,10:20,11:20
-66
- 28413 multiletter control sequences out of 65536+600000
- 76 fonts using 8937479 bytes
- 70i,9n,77p,1720b,693s stack positions out of 5000i,500n,10000p,200000b,80000s
+   avail lists: 2:1202,3:396,4:82,5:1147,6:57,7:16405,8:1,9:780,10:20,11:2066
+ 28113 multiletter control sequences out of 65536+600000
+ 76 fonts using 8941959 bytes
+ 70i,9n,77p,1706b,308s stack positions out of 5000i,500n,10000p,200000b,80000s
 <//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lmrom
 an8-bold.otf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/pu
-blic/lm/lmmono8-regular.otf><//?/c:/users/sebas/appdata/local/programs/miktex/fo
-nts/opentype/public/lm/lmroman10-italic.otf><//?/c:/users/sebas/appdata/local/pr
-ograms/miktex/fonts/opentype/public/lm/lmroman8-italic.otf><//?/c:/users/sebas/a
-ppdata/local/programs/miktex/fonts/opentype/public/lm/lmroman8-regular.otf><//?/
-c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lmroman10-
-regular.otf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/pub
-lic/lm/lmromancaps10-regular.otf><//?/c:/users/sebas/appdata/local/programs/mikt
-ex/fonts/opentype/public/lm/lmroman9-bold.otf><//?/c:/users/sebas/appdata/local/
-programs/miktex/fonts/opentype/public/lm/lmroman10-bolditalic.otf><//?/c:/users/
-sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lmroman12-regular.o
-tf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lm
-roman17-regular.otf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/open
-type/public/lm/lmroman7-regular.otf>
-Output written on seminar.pdf (10 pages, 2348364 bytes).
+blic/lm/lmromancaps10-oblique.otf><//?/c:/users/sebas/appdata/local/programs/mik
+tex/fonts/opentype/public/lm/lmroman8-italic.otf><//?/c:/users/sebas/appdata/loc
+al/programs/miktex/fonts/opentype/public/lm/lmroman8-regular.otf><//?/c:/users/s
+ebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lmroman10-italic.otf
+><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lmro
+man10-regular.otf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/openty
+pe/public/lm/lmromancaps10-regular.otf><//?/c:/users/sebas/appdata/local/program
+s/miktex/fonts/opentype/public/lm/lmroman9-bold.otf><//?/c:/users/sebas/appdata/
+local/programs/miktex/fonts/opentype/public/lm/lmroman10-bolditalic.otf><//?/c:/
+users/sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lmroman12-reg
+ular.otf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/public
+/lm/lmroman17-regular.otf><//?/c:/users/sebas/appdata/local/programs/miktex/font
+s/opentype/public/lm/lmroman7-regular.otf>
+Output written on seminar.pdf (10 pages, 2346980 bytes).
 
 PDF statistics: 135 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
