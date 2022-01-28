@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.9)  27 JAN 2022 17:44
+This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.9)  28 JAN 2022 13:39
  restricted system commands enabled.
 **seminar.tex
 (./seminar.tex
@@ -642,14 +642,41 @@ Overfull \hbox (13.20154pt too wide) in paragraph at lines 202--203
  [][] 
  []
 
+
+LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
+(Font)              using `TU/lmr/m/scsl' instead on input line 214.
+
+
+LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
+(Font)              using `TU/lmr/m/scsl' instead on input line 240.
+
 [6<./residual.png>]
-<loss.png, id=46, 462.528pt x 346.896pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+<loss.png, id=47, 462.528pt x 346.896pt>
 File: loss.png Graphic file (type png)
 <use loss.png>
 Package luatex.def Info: loss.png  used on input line 294.
 (luatex.def)             Requested size: 252.0pt x 189.00427pt.
- [7<./conv_net_architectures.png>] [8<./loss.png>]
-(./seminar.bbl
+
+
+LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
+(Font)              using `TU/lmr/m/scsl' instead on input line 303.
+
+[7<./conv_net_architectures.png>]
+
+LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
+(Font)              using `TU/lmr/m/scsl' instead on input line 323.
+
+
+LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
+(Font)              using `TU/lmr/m/scsl' instead on input line 344.
+
+
+LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
+(Font)              using `TU/lmr/m/scsl' instead on input line 365.
+
+[8<./loss.png>] (./seminar.bbl
 Underfull \hbox (badness 3919) in paragraph at lines 147--150
 \TU/lmr/m/n/8 line]. Available: https://-git-hub.com/keras-team/keras-
  []
@@ -668,7 +695,7 @@ Here is how much of LuaTeX's memory you used:
  477 words of node memory still in use:
    4 hlist, 1 vlist, 1 rule, 6 glue, 3 kern, 1 glyph, 9 attribute, 52 glue_spec,
  6 attribute_list, 1 write nodes
-   avail lists: 2:1202,3:396,4:82,5:1147,6:57,7:16405,8:1,9:780,10:20,11:2066
+   avail lists: 2:1414,3:409,4:90,5:1147,6:57,7:16446,8:1,9:776,10:20,11:2066
  28113 multiletter control sequences out of 65536+600000
  76 fonts using 8941959 bytes
  70i,9n,77p,1706b,308s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -687,7 +714,7 @@ users/sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lmroman12-reg
 ular.otf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/public
 /lm/lmroman17-regular.otf><//?/c:/users/sebas/appdata/local/programs/miktex/font
 s/opentype/public/lm/lmroman7-regular.otf>
-Output written on seminar.pdf (10 pages, 2346980 bytes).
+Output written on seminar.pdf (10 pages, 2350163 bytes).
 
 PDF statistics: 135 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
