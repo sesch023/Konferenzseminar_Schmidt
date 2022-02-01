@@ -82,7 +82,7 @@ Typischerweise wird durch eine passende Wahl von Strides und Filtern eine Kompri
 
 \subsection{Vision Transformer} %12.11
 
-\emph{Vision Transformer} (ViT) sind eine neue Technik des Maschinellen Lernens auf Basis der \emph{Transformer} \cite{TRANSFORMERS}. Diese basieren auf dem Hauptprinzip der sogenannten Attention und werden vorwiegend im Natural Language Processing eingesetzt, in welchem sie die vorher prävalenten \emph{Rekurrenten Neuronalen Netze} (\emph{RNN}) weitgehend ablösen konnten \cite{TRANSFORMERS}. Wurden diese in Encoder-Decoder Netzen, spezielle Neuronale Netze bei welchen aus einer Eingabesequenz eine Ausgabesequenz erzeugt wird \cite[S.388-389]{MACHINE_LEARNING}, eingesetzt, so wurde bis zur Nutzung von Attentions nur ein letzter Zustand des Encoders als Eingabe im Decoder genutzt. Dies hat sich nach aktueller Forschung als Bottleneck herausgestellt, welches \emph{Rekurrenten Neuronale Netze} besonders bei längeren Sätzen stark behindert hat \cite[S.2]{TRANSFORMERS}. Stattdessen wurden neue \emph{RNN}s entworfen, welche es dem Decoder über eine erlernbare Attention erlauben sich in jedem Schritt auf andere Aspekte aller Zustände des Encoders zu konzentrieren \cite[S.4]{RNN_ATTENTION}. Eine Repräsentation dieses Vorgangs lässt sich in Abbildung \ref{bildAttention} erkennen. Auf dieser wird über zunehmende Grauwerte die Attention zwischen einem englischen und französischen Satz dargestellt.
+\emph{Vision Transformer} (ViT) sind eine neue Technik des Maschinellen Lernens auf Basis der \emph{Transformer} \cite{TRANSFORMERS}. Diese basieren auf dem Hauptprinzip der sogenannten Attention und werden vorwiegend im Natural Language Processing eingesetzt, in welchem sie die vorher prävalenten \emph{Rekurrenten Neuronalen Netze} (\emph{RNN}) weitgehend ablösen konnten \cite{TRANSFORMERS}. Wurden diese in Encoder-Decoder Netzen, spezielle Neuronale Netze bei welchen aus einer Eingabesequenz eine Ausgabesequenz erzeugt wird \cite[S.388-389]{MACHINE_LEARNING}, eingesetzt, so wurde bis zur Nutzung von Attentions nur ein letzter Zustand des Encoders als Eingabe im Decoder genutzt. Dies hat sich nach aktueller Forschung als Bottleneck herausgestellt, welches \emph{Rekurrenten Neuronale Netze} besonders bei längeren Sätzen stark behindert hat \cite[S.2]{TRANSFORMERS}. 
 
 \begin{figure}[!htb]
 	% \centering
@@ -97,12 +97,9 @@ Typischerweise wird durch eine passende Wahl von Strides und Filtern eine Kompri
 	\caption{Grundsätzlicher Aufbau eines Vision Transformers \cite[S.3]{VIT}}
 	\label{vitimg}
 \end{figure*}
+Stattdessen wurden neue \emph{RNN}s entworfen, welche es dem Decoder über eine erlernbare Attention erlauben sich in jedem Schritt auf andere Aspekte aller Zustände des Encoders zu konzentrieren \cite[S.4]{RNN_ATTENTION}. Eine Repräsentation dieses Vorgangs lässt sich in Abbildung \ref{bildAttention} erkennen. In dieser wird über zunehmende Grauwerte die Attention zwischen einem englischen und französischen Satz dargestellt. In weiteren Forschungen im Natural Language Processing hat sich herausgestellt, dass reine Netzwerke basierend auf Attention \emph{RNN}s als State of the Art können \cite[S.2]{TRANSFORMERS}. Dies sind die bereits erwähnten \emph{Transformer}.
 
-In weiteren Forschungen im Natural Language Processing hat sich herausgestellt, dass reine Netzwerke basierend auf Attention \emph{RNN}s als State of the Art können \cite[S.2]{TRANSFORMERS}. Dies sind die bereits erwähnten \emph{Transformer}.
-
-\emph{Vision Transformer} sind vom Aufbau den \emph{Transformern} im Natural Language Processing sehr ähnlich, besitzen jedoch im Fall von Klassifikation nur den Encoder der Transformer Modelle. Der grundsätzliche Aufbau lässt sich in der Abbildung \ref{vitimg} erkennen.
-
-Dabei werden zunächst die Eingabebilder in mehrere zweidimensionale Bereiche einer vordefinierbaren Größe unterteilt, wobei ähnlich wie bei den \emph{CNN}s ein Stride zum Überlappen von Bildbereichen genutzt werden kann. Danach werden die Eingabedaten über eine trainierbare lineare Projektion auf D, eine konstante vordefinierte Vektorgröße in allen Schichten des Transformers, Dimensionen reduziert und damit die sogenannten Patch-Embeddings generiert. Zusätzlich werden eindimensionale Positionskennungen der Patches hinzugefügt, welche eine Repräsentation der Reihenfolge der Bildteile im Modell ermöglicht. Schließlich wird an den Anfang der Daten ein spezielles Class-Token für das Erlernen der vorhandenen Klasse angefügt \cite[S.3]{VIT}. 
+\emph{Vision Transformer} sind vom Aufbau den \emph{Transformern} im Natural Language Processing sehr ähnlich, besitzen jedoch im Fall von Klassifikation nur den Encoder der Transformer Modelle. Der grundsätzliche Aufbau lässt sich in der Abbildung \ref{vitimg} erkennen. Dabei werden zunächst die Eingabebilder in mehrere zweidimensionale Bereiche einer vordefinierbaren Größe unterteilt, wobei ähnlich wie bei den \emph{CNN}s ein Stride zum Überlappen von Bildbereichen genutzt werden kann. Danach werden die Eingabedaten über eine trainierbare lineare Projektion auf D, eine konstante vordefinierte Vektorgröße in allen Schichten des Transformers, Dimensionen reduziert und damit die sogenannten Patch-Embeddings generiert. Zusätzlich werden eindimensionale Positionskennungen der Patches hinzugefügt, welche eine Repräsentation der Reihenfolge der Bildteile im Modell ermöglicht. Schließlich wird an den Anfang der Daten ein spezielles Class-Token für das Erlernen der vorhandenen Klasse angefügt \cite[S.3]{VIT}. 
 
 Die Schichten des Encoders bestehen im Kern aus mehreren Multiheaded Self-Attentions, darauffolgende zweischichtigen Multilayer Perceptrons und Residual Connections zwischen den inneren Schichten. Weiterhin wird eine Layernormalisierung vor jeder Multiheaded Self-Attention und jedem Multilayer Perceptron ausgeführt. Am Ende wird aus dem Encoder schließlich der Statusvektor an der Position des Class-Token entnommen und zur Klassifikation in ein weiteres Feed-Forward-Netz mit einer einzelnen Schicht geleitet \cite[S.3-4]{VIT}. 
 
@@ -172,12 +169,21 @@ Mit diesem ersten Datensatz können einige praktische Probleme nicht gelöst wer
 Wie ersichtlich wird, beinhaltet die gesamte \emph{ETL Character Database} noch deutlich mehr Daten, welche für das Maschinelle Lernen genutzt werden können. So konnten die vorliegenden Kanji verdreifacht und die durchschnittlichen Datenpunkte pro Kanji nahezu verdoppelt werden. Weiterhin sind die Hiragana nicht mehr stark unterrepräsentiert und sonstige Zeichen wie aus dem lateinischen Alphabet oder Satzzeichen können erlernt werden. Eine größere Schwankung in der Durchschnittszahl der Datenpunkte sowie eine höhere Streuung dieser macht auch hier wieder eine Nutzung von Klassengewichtungen eine sinnvolle Ergänzung.
 
 Eine beliebte Möglichkeit das Overfitting von Modellen zu verringern sowie die Toleranz gegenüber Daten in der Praxis zu verbessern ist die sogenannte Data Augmentation. Dabei können durch bestimmte Transformationen aus vorliegenden Daten neue generiert werden. Typische Vorgehensweisen bei Bildern sind das Skalieren, Verschieben oder Rotieren der Daten. Auch eine Spiegelung kann sich bei manchen Bilddaten als sinnvoll erweisen, jedoch würde dies die Bedeutung von Schriftzeichen zerstören. Werden Transformationen miteinander kombiniert, so kann die Anzahl der vorhandenen Daten um ein Vielfaches erhöht werden \cite[S.311]{MACHINE_LEARNING}. Im Code des Projekts können Skalierungen und Rotationen verwendet werden, um die Daten künstlich zu erhöhen. Dies geschieht über Transformationsmatrizen, welche mit der Bibliothek \emph{CV2} generiert und angewendet wurden. Eine Generation von Daten mit 25 verschiedenen Transformationsmatrizen wurde erprobt. Diese würden bei der beispielhaften Anwendung auf dem Kanji mit der Bedeutung \textit{zwei Stück} die Ausgabe in der Abbildung \ref{rot} erzeugen. Dort wird die Skalierung und Rotation ersichtlich, welche in einer Vergrößerung der Daten um den Faktor 25 resultieren würde.
+
 \begin{figure}[!htb]
 	% \centering
 	\includegraphics[width=\columnwidth]{rot_scale}
 	\caption{Transformationen des Kanji \textit{zwei Stück}}
 	\label{rot}
 \end{figure}
+
+\begin{figure*}[!htb]
+	\centering
+	\includegraphics[width=2.1\columnwidth]{conv_net_architectures}
+	\caption{Genutzte \emph{VGGNet} Architekturen im Paper von Charlie Tsai \cite[S.3]{RHC}}
+	\label{vggnet}
+\end{figure*}
+
 \section{Eingesetzte Modelle}
 In den vorherigen beiden Kapitel wurde die technologische- sowie Datengrundlage für die Arbeit gelegt. Diese Grundlagen erlauben nun eine eigene Definition von Modellen, welche im nächsten Kapitel hervorgehoben werden. 
 
@@ -186,6 +192,7 @@ Im Gegensatz zum Paper \cite{RHC}, wurde aufgrund der guten Ergebnisse bei einer
 Während des Lernvorgangs wurden die Daten in 80\% Trainings- und jeweils 10\% Validierungs- und Testdaten aufgeteilt. Alle Modelle wurden mit einem \emph{Adam-Optimizer}, einem beliebten Optimierungsalgorithmus für Neuronale Netze, trainiert, welcher auch in \cite{RHC} genutzt wurde \cite[S.4]{RHC}. Die Startlernrate wurde dabei von Modell zu Modell angepasst. Es wurde weiterhin eine zerfallende Lernrate genutzt, welche alle 20 Epochen die Rate auf ein 0,9-Faches des ursprünglichen Wertes reduziert. Dies ist am Vorgehen von \cite{RHC} angelehnt \cite[S.4]{RHC}. Die Genauigkeit und der Verlust auf den Validierungsdaten wird mit jeder Epoche berechnet und dient als Maß des Fortschritt während des Trainings. Ein Training wird automatisch abgebrochen, falls nach 20 Epochen keine Verbesserung des Verlusts auftritt. Nach dem Training wird eine Übersicht generiert, welche den ungewichteten Durchschnitt des F1-Scores aller Klassen auf den Validierungsdaten als auch für einen späteren Vergleich zwischen den Modellen auf den Testdaten beinhaltet. Zusätzlich wird die Gesamtgenauigkeit ausgegeben.
 
 \subsection{VGGNet}  %14.11 --- 
+
 Die Architektur der \emph{VGGNet} wurde in Simonyans und Zissermans Paper \cite{simonyan2015deep} entworfen und konnte 2015 State of the Art Genauigkeiten mit einem relativ einfachen sowie flexiblen Aufbau \emph{Konvolutionaler Neuronaler Netze} erreichen \cite[S.1]{simonyan2015deep}. Sie arbeiten in den konvolutionalen Schichten typischerweise mit einem Wahrnehmungsfeld von 3 x 3 Elementen. Weiterhin nutzen sie ein 2 x 2 Max-Pooling mit einem Stride von 2. Das Max-Pooling tritt dabei nach einigen aber nicht jeder Schicht auf. Danach folgen zwei Feed-Forward Schichten mit 4096 Neuronen und schließlich eine Feed-Forward Schicht mit Neuronen in Höhe der Anzahl der vorliegenden Klassen \cite[S.2]{simonyan2015deep}.
 
 In \cite{RHC} wurden 11 \emph{VGGNet} artige Netze umgesetzt, welche in der Abbildung \ref{vggnet} von links nach rechts nach Netzgröße geordnet dargestellt werden. Diese weisen im Vergleich zum originalen \emph{VGGNet} Paper einige Veränderungen in der Struktur auf. Zum einen liegen die Daten nur mit einem 64 x 64 Pixel Grauwertkanal vor \cite[S.3]{RHC}. Dadurch wird die Größe der Eingabedaten im Gegensatz zum originalen \emph{VGGNet} Paper mit 224 x 224 Pixel RGB-Bildern sehr viel kleiner \cite[S.2]{simonyan2015deep}. Weiterhin wurde die Anzahl der Neuronen und Schichten im Feed-Forward Teil von Modell zu Modell angepasst \cite[S.3]{RHC}. Aufgrund der guten Ergebnisse der Klassifikation in \cite{RHC}, wurde ein besonderer Fokus auf die Modelle \emph{M7-1}, \emph{M7-2}, \emph{M9} und \emph{M12} gesetzt \cite[S.5]{RHC}. Alle diese Netzen wurden nach \cite{RHC} mit einem Dropout, eine Möglichkeit eine gewisse Zahl von Neuronen während des Trainings auszuschalten, um Overfitting also ein Auswendiglernen der Eingabedaten zu verhindern, versehen \cite[S.306-307]{MACHINE_LEARNING}. Dieser wurde allerdings aufgrund schlechterer Ergebnisse bei höheren Raten auf 25\% verringert und nur nach jeder Gruppe von Schichten platziert \cite[S.2]{RHC}. Mit Batch-Normalisierung wurde zusätzlich eine weitere Technik zum Verhindern von Overfitting eingesetzt \cite[S.282-283]{MACHINE_LEARNING}. Dank der direkten Unterstützung der \emph{Keras Applications API} und einer Möglichkeit des Transfer Learnings bereits erlernter Modellgewichte, wurden zusätzlich die von Keras implementierten \emph{VGG16} und \emph{VGG19} Netze erprobt \cite{vgg_keras}.
@@ -197,19 +204,13 @@ In \cite{RHC} wurden 11 \emph{VGGNet} artige Netze umgesetzt, welche in der Abbi
 	\label{res}
 \end{figure}
 
-\begin{figure*}[!htb]
-	\centering
-	\includegraphics[width=2.1\columnwidth]{conv_net_architectures}
-	\caption{Genutzte \emph{VGGNet} Architekturen im Paper von Charlie Tsai \cite[S.3]{RHC}}
-	\label{vggnet}
-\end{figure*}
-
 \subsection{ResNet} %15.11
 Die \emph{ResNet} sind spezielle Architekturen Neuronaler Netze, welche mittels Restdarstellungen (Residual Representations) durch Abkürzungsverbindungen (Shortcut Connections) die Performanz tiefer Neuronaler Netze und im besonderen \emph{Konvolutionaler Netze} verbessern sollen \cite[S.1-2]{resnet}. Dabei wird eine Ausgabe, welche an einem bestimmten Punkt im Netzwerk ausgegeben wurde, an einem späteren Punkt identisch vor der Aktivierungsfunktion in die Ausgabe der tieferen Schicht eingerechnet \cite[S.4]{resnet}. Diese Funktionsweise lässt sich in der Abbildung \ref{res} am Beispiel zweier Schichten erkennen.
 
 Ein solches Vorgehen soll den bei tiefen Neuronalen Netzen beobachteten Effekt des Zerfalls von Genauigkeiten bei einer zunehmenden Steigerung der Schichtenzahl mildern \cite[S.1]{resnet}. \emph{Keras} bietet in der \emph{Applications API} für diese Netzarchitekturen sechs vordefinierte Modelle, welche 50, 101 bzw. 152 Schichten aufweisen \cite{resnet_keras}. Im Besonderen wurde beim Trainieren ein Fokus auf die V2 Varianten dieser Modelle gesetzt, bei welchen es sich um eine Verbesserung des originalen Ansatz der \emph{ResNet} handelt \cite{resnetv2}.
 \subsection{Vision Transformer} %15.11
 \emph{Vision Transformer} wurden in vier verschiedenen Varianten erprobt, welche im zugehörigen Paper dargestellt wurden. Es wurden dabei Modelle mit 12 (Base), 24 (Large) und 32 (Huge) Schichten vorgestellt, wobei die größte Variante aufgrund der nötigen Datenmenge nicht erprobt wurde. Alle Varianten der \emph{ViT} mit ihren Parametern lassen sich in der Tabelle \ref{vit_sizes} erkennen. \cite[S.5]{VIT}. Die Base- und Large-Varianten wurden in der Version 16 und 32 erprobt, bei welcher es sich um die Dimensionen der Input Patches handelt. Bei der Version 16 sind diese 16x16 Pixel, während die Größen bei der Version 32 bei 32x32 Pixeln liegen \cite[S.5]{VIT}. 
+
 \begin{table}[!htb]
 	\caption{Vordefinierte Varianten der \emph{Vision Transformer} Modelle \cite[S.5]{VIT}}
 	\label{vit_sizes}
@@ -262,7 +263,6 @@ Mittels des Tsai-Datensatz und der definierten \emph{VGG} Netzen konnten sehr ä
 
 Das beste Modell \emph{M7-1} im Paper \cite{RHC} konnte statt mit einer Genauigkeit von 99,39\% und 99,53\% nur einen durchschnittlichen F1-Score von 98,92\% und 98,87\% erreichen. Stattdessen konnte das Modell \emph{M12} mit 99,34\% und 99,31\% sehr vergleichbare Ergebnisse erlangen, während es in \cite{RHC} schlechter abschnitt. Eine Abweichung von über einem halben Prozent im \emph{M7-1} ist bei Modellen, die schnell eine Genauigkeit von über 95\% erreichen enorm und eine zufällige Schwankung ist eher auszuschließen. Es könnten Unterschiede beim Vorverarbeiten der Daten oder bei der Regularisierung, Techniken wie Dropout oder Batch-Normalisierung die einem Overfitting entgegenwirken können \cite[S.27]{MACHINE_LEARNING}, aufgetreten sein. Dies wäre eine mögliche Hypothese für die unterschiedlichen Ergebnisse. Unterschiede bei der Regularisierung könnten dabei ebenfalls eine Erklärung für das besseres Abschneiden des \emph{M12} Modells sein. Die Modelle \emph{M7-2} und \emph{M9} liegen von ihren Ergebnissen zwischen \emph{M7-1} sowie \emph{M12} und weichen nicht viel von den des Papers \cite{RHC} ab. Die zusätzlichen über \emph{Keras Applications API} eingesetzten Modelle \emph{VGG16} und \emph{VGG19} schnitten durchweg schlechter als die vorher definierten Modelle ab. Da diese keine eingebaute Regularisierung bieten \cite{keras_vgg} und sie deutlich größer als die anderen Modelle ausfallen, könnte ein früheres Overfitting eine Erklärung für diese Ergebnisse sein.
 
-Für den größeren kompletten Datensatz wurden dieselben \emph{VGG} Netze genutzt, wobei einige Modelle aufgrund hoher Rechenzeit nicht mehr zu Ende trainiert werden konnten. Die Ergebnisse dazu werden in der Tabelle \ref{vgg_ergebnis_full} dargestellt.
 \begin{table}[!htb]
 	\caption{Genauigkeit und F1-Scores der VGGNet Modelle für den kompletten Datensatz in Prozent}
 	\label{vgg_ergebnis_full}
@@ -287,7 +287,7 @@ Für den größeren kompletten Datensatz wurden dieselben \emph{VGG} Netze genut
 	\end{tabular}
 \end{table}
 
-Dieser Datensatz konnte trotz seiner Größe nahezu durchweg bessere Ergebnisse wie der Tsai-Datensatz liefern. Hier ist erneut das \emph{M12} Modell das Beste, welches mit 99,51\% und 99,54\% etwas bessere Ergebnisse im Vergleich zu \cite{RHC} liefert. Aber auch das \emph{M7-1} konnte die Ergebnisse verbessern und angleichen. Die anderen Modelle behalten das im vorherigen Abschnitt bezeichnete Verhalten bei, wobei die Ergebnisse leicht verbessert wurden. Es sei zusätzlich zu beachten, dass über eine Weiterführung des Trainings des \emph{M7-2} Modells noch eine leichte Verbesserung stattfinden könnte. Dies ist in Abbildung \ref{loss} zu erkennen, in welcher der Verlust über weiteren Epochen noch weiter sinken könnte.
+Für den größeren kompletten Datensatz wurden dieselben \emph{VGG} Netze genutzt, wobei einige Modelle aufgrund hoher Rechenzeit nicht mehr zu Ende trainiert werden konnten. Die Ergebnisse dazu werden in der Tabelle \ref{vgg_ergebnis_full} dargestellt.
 
 \begin{figure}[!htb]
 	\centering
@@ -296,9 +296,12 @@ Dieser Datensatz konnte trotz seiner Größe nahezu durchweg bessere Ergebnisse 
 	\label{loss}
 \end{figure}
 
+Dieser Datensatz konnte trotz seiner Größe nahezu durchweg bessere Ergebnisse wie der Tsai-Datensatz liefern. Hier ist erneut das \emph{M12} Modell das Beste, welches mit 99,51\% und 99,54\% etwas bessere Ergebnisse im Vergleich zu \cite{RHC} liefert. Aber auch das \emph{M7-1} konnte die Ergebnisse verbessern und angleichen. Die anderen Modelle behalten das im vorherigen Abschnitt bezeichnete Verhalten bei, wobei die Ergebnisse leicht verbessert wurden. Es sei zusätzlich zu beachten, dass über eine Weiterführung des Trainings des \emph{M7-2} Modells noch eine leichte Verbesserung stattfinden könnte. Dies ist in Abbildung \ref{loss} zu erkennen, in welcher der Verlust über weiteren Epochen noch weiter sinken könnte.
+
 \subsection{ResNet}
 
 Die Ergebnisse der vorher genannten \emph{ResNet} Modelle \emph{50V2}, \emph{101V2} und \emph{151V2} aus der \emph{Keras Applications API} für den Tsai-Datensatz sind in der Tabelle \ref{resnet_ergebnis_tsai} dargestellt.
+
 \begin{table}[!htb]
 	\caption{Genauigkeit und F1-Scores der \emph{ResNet} Modelle für den Tsai-Datensatz in Prozent}
 	\label{resnet_ergebnis_tsai}
@@ -316,6 +319,7 @@ Die Ergebnisse der vorher genannten \emph{ResNet} Modelle \emph{50V2}, \emph{101
 		\hline 
 	\end{tabular}
 \end{table} 
+
 Das \emph{151V2} konnte von diesen die besten Ergebnisse erreichen. Diese sind mit 98,95\% und 98,96\% in etwa vergleichbar mit den Ergebnissen des \emph{M7-1}, jedoch damit geringer als die des \emph{M-12} Modells. Die anderen beiden Modelle erreichen leicht schlechtere Ergebnisse als das \emph{151V2}. 
 
 Für die Resultate des kompletten Datensatz, welche in der Tabelle \ref{resnet_ergebnis_full} dargestellt werden, sieht dieses Bild etwas anders aus. Hier liefert das \emph{101V2} Modell leicht bessere Ergebnisse wie das \emph{151V2}, obwohl beide Modelle dieselbe (verkürzte) Zeit trainiert wurden. Es ist dabei allerdings durchaus möglich, dass bei einer Beendigung des Trainings eine deutliche Verbesserung des \emph{151V2} stattfinden würde, was die Resultate zum Tsai-Datensatz spiegelt.

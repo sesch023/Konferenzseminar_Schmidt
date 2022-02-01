@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.9)  28 JAN 2022 13:39
+This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10) (format=lualatex 2021.11.9)  29 JAN 2022 14:57
  restricted system commands enabled.
 **seminar.tex
 (./seminar.tex
@@ -586,104 +586,98 @@ Overfull \hbox (13.20154pt too wide) in paragraph at lines 96--97
  [][] 
  []
 
-[2<./cnn_example.png>]
-<kana.png, id=24, 402.21696pt x 175.08267pt>
+[2<./cnn_example.png><./attention_visualized.png>] [3<./vitimg.png>]
+<kana.png, id=29, 402.21696pt x 175.08267pt>
 File: kana.png Graphic file (type png)
 <use kana.png>
-Package luatex.def Info: kana.png  used on input line 117.
+Package luatex.def Info: kana.png  used on input line 114.
 (luatex.def)             Requested size: 252.0pt x 109.69621pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 127.
+(Font)              <8> on input line 124.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 127.
+(Font)              <6> on input line 124.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 127.
- [3<./attention_visualized.png>]
+(Font)              <5> on input line 124.
+
 
 LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
-(Font)              using `TU/lmr/m/scsl' instead on input line 151.
+(Font)              using `TU/lmr/m/scsl' instead on input line 148.
 
-
-Underfull \vbox (badness 1137) has occurred while \output is active []
-
-<rot_scale.png, id=29, 154.176pt x 154.176pt>
+[4<./kana.png>]
+<rot_scale.png, id=35, 154.176pt x 154.176pt>
 File: rot_scale.png Graphic file (type png)
 <use rot_scale.png>
-Package luatex.def Info: rot_scale.png  used on input line 177.
+Package luatex.def Info: rot_scale.png  used on input line 175.
 (luatex.def)             Requested size: 252.0pt x 252.00568pt.
- [4<./vitimg.png><./kana.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 182--183
-[]\TU/ptm/bx/it/10 In den vor-he-ri-gen bei-den Ka-pi-tel wur-de die
- []
-
-
-Underfull \hbox (badness 2790) in paragraph at lines 182--183
-\TU/ptm/bx/it/10 technologische- so-wie Da-ten-grund-la-ge für die Ar-beit
- []
-
-
-Underfull \hbox (badness 3838) in paragraph at lines 182--183
-\TU/ptm/bx/it/10 ge-legt. Die-se Grund-la-gen er-lau-ben nun ei-ne ei-ge-ne
- []
-
-[5<./rot_scale.png>]
-<residual.png, id=40, 542.025pt x 292.09125pt>
-File: residual.png Graphic file (type png)
-<use residual.png>
-Package luatex.def Info: residual.png  used on input line 195.
-(luatex.def)             Requested size: 252.0pt x 135.79872pt.
-<conv_net_architectures.png, id=41, 1333.55357pt x 716.24731pt>
+<conv_net_architectures.png, id=36, 1333.55357pt x 716.24731pt>
 File: conv_net_architectures.png Graphic file (type png)
 <use conv_net_architectures.png>
-Package luatex.def Info: conv_net_architectures.png  used on input line 202.
+Package luatex.def Info: conv_net_architectures.png  used on input line 182.
 (luatex.def)             Requested size: 529.20154pt x 284.24246pt.
 
-Overfull \hbox (13.20154pt too wide) in paragraph at lines 202--203
+Overfull \hbox (13.20154pt too wide) in paragraph at lines 182--183
  [][] 
  []
 
 
-LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
-(Font)              using `TU/lmr/m/scsl' instead on input line 214.
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
+[]\TU/ptm/bx/it/10 In den vor-he-ri-gen bei-den Ka-pi-tel wur-de die
+ []
+
+
+Underfull \hbox (badness 2790) in paragraph at lines 188--189
+\TU/ptm/bx/it/10 technologische- so-wie Da-ten-grund-la-ge für die Ar-beit
+ []
+
+
+Underfull \hbox (badness 3838) in paragraph at lines 188--189
+\TU/ptm/bx/it/10 ge-legt. Die-se Grund-la-gen er-lau-ben nun ei-ne ei-ge-ne
+ []
+
+[5<./rot_scale.png>]
+<residual.png, id=41, 542.025pt x 292.09125pt>
+File: residual.png Graphic file (type png)
+<use residual.png>
+Package luatex.def Info: residual.png  used on input line 202.
+(luatex.def)             Requested size: 252.0pt x 135.79872pt.
 
 
 LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
-(Font)              using `TU/lmr/m/scsl' instead on input line 240.
+(Font)              using `TU/lmr/m/scsl' instead on input line 215.
 
-[6<./residual.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[6<./conv_net_architectures.png><./residual.png>]
+
+LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
+(Font)              using `TU/lmr/m/scsl' instead on input line 241.
 
 <loss.png, id=47, 462.528pt x 346.896pt>
 File: loss.png Graphic file (type png)
 <use loss.png>
 Package luatex.def Info: loss.png  used on input line 294.
 (luatex.def)             Requested size: 252.0pt x 189.00427pt.
+[7<./loss.png>]
+
+LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
+(Font)              using `TU/lmr/m/scsl' instead on input line 306.
 
 
 LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
-(Font)              using `TU/lmr/m/scsl' instead on input line 303.
-
-[7<./conv_net_architectures.png>]
-
-LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
-(Font)              using `TU/lmr/m/scsl' instead on input line 323.
+(Font)              using `TU/lmr/m/scsl' instead on input line 327.
 
 
 LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
-(Font)              using `TU/lmr/m/scsl' instead on input line 344.
+(Font)              using `TU/lmr/m/scsl' instead on input line 348.
 
 
 LaTeX Font Warning: Font shape `TU/lmr/m/scit' undefined
-(Font)              using `TU/lmr/m/scsl' instead on input line 365.
+(Font)              using `TU/lmr/m/scsl' instead on input line 369.
 
-[8<./loss.png>] (./seminar.bbl
+[8] (./seminar.bbl
 Underfull \hbox (badness 3919) in paragraph at lines 147--150
 \TU/lmr/m/n/8 line]. Available: https://-git-hub.com/keras-team/keras-
  []
 
-[9]) [10
-
-] (./seminar.aux)
+) [9] (./seminar.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -695,10 +689,10 @@ Here is how much of LuaTeX's memory you used:
  477 words of node memory still in use:
    4 hlist, 1 vlist, 1 rule, 6 glue, 3 kern, 1 glyph, 9 attribute, 52 glue_spec,
  6 attribute_list, 1 write nodes
-   avail lists: 2:1414,3:409,4:90,5:1147,6:57,7:16446,8:1,9:776,10:20,11:2066
+   avail lists: 2:1496,3:408,4:92,5:1147,6:57,7:16326,8:1,9:812,10:21,11:2066
  28113 multiletter control sequences out of 65536+600000
  76 fonts using 8941959 bytes
- 70i,9n,77p,1706b,308s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 70i,9n,77p,1706b,276s stack positions out of 5000i,500n,10000p,200000b,80000s
 <//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lmrom
 an8-bold.otf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/pu
 blic/lm/lmromancaps10-oblique.otf><//?/c:/users/sebas/appdata/local/programs/mik
@@ -714,9 +708,9 @@ users/sebas/appdata/local/programs/miktex/fonts/opentype/public/lm/lmroman12-reg
 ular.otf><//?/c:/users/sebas/appdata/local/programs/miktex/fonts/opentype/public
 /lm/lmroman17-regular.otf><//?/c:/users/sebas/appdata/local/programs/miktex/font
 s/opentype/public/lm/lmroman7-regular.otf>
-Output written on seminar.pdf (10 pages, 2350163 bytes).
+Output written on seminar.pdf (9 pages, 2349125 bytes).
 
-PDF statistics: 135 PDF objects out of 1000 (max. 8388607)
+PDF statistics: 132 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 
